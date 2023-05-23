@@ -1,0 +1,9 @@
+CREATE DATABASE campusv2;
+DROP TABLE IF EXISTS campers;
+CREATE TABLE campers(
+    id SMALLINT NOT NULL AUTO_INCREMENT,
+    nombres VARCHAR(50) NOT NULL ,
+    direccion VARCHAR(50) NOT NULL ,
+    logros VARCHAR(50) NOT NULL ,
+    PRIMARY KEY(id),
+);
