@@ -62,5 +62,18 @@ class Config{
         return $e->getMessages();
       }
     }
+    public function delete(){
+      try {
+        $stm = $this-> dbCnx -> prepare("DELETE FROM camper WHERE id =?");
+        $stm -> execute(array($this->id));
+        return $stm -> fetchAll();
+        echo "
+              <script> alert('Registro eliminado');
+              document.location='estudiantes.php'
+              </script>";
+      } catch (Exception $e) {
+        return $e->getMessages();
+      }
+    }
 }
 ?>

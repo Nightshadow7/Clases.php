@@ -19,9 +19,8 @@ $all = $data -> obtainAll();
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-
-
   <link rel="stylesheet" type="text/css" href="css/estudiantes.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 </head>
 
@@ -70,18 +69,58 @@ $all = $data -> obtainAll();
 
             <!-- ///////Llenado DInamico desde la Base de Datos -->
             <?php
-              foreach($all as $key => $val){                   
-            ?>
-            <tr>
-              <td><?php echo $val['id']; ?></td>
-              <td><?php echo $val['nombres'];?></td>
-              <td><?php echo $val['direccion'];?></td>
-              <td><?php echo $val['logros'];?></td>
-              
-            </tr>
-            <?php
+              foreach ($all as $key => $val) {
+                  $color = rand(1, 7);
+                  switch ($color) {
+                      case 1:
+                          $but = "btn btn-outline-primary";
+                          break;
+                      case 2:
+                          $but = "btn btn-outline-secondary";
+                          break;
+                      case 3:
+                          $but = "btn btn-outline-success";
+                          break;
+                      case 4:
+                          $but = "btn btn-outline-danger";
+                          break;
+                      case 5:
+                          $but = "btn btn-outline-warning";
+                          break;
+                      case 6:
+                          $but = "btn btn-outline-info";
+                          break;
+                      case 7:
+                          $but = "btn btn-outline-light";
+                          break;
+                      default:
+                          $but = "btn btn-outline-danger";
+                          break;
+                  }
+                  /* for ($i= id; $i< str_len($all);$i++){
+                    for($j=$i+1; $j>$i; $j++){
+
+                    }
+                  } */
+                  ?>
+                  <tr>
+                      <td><?php echo $val['id']; ?></td>
+                      <td><?php echo $val['nombres']; ?></td>
+                      <td><?php echo $val['direccion']; ?></td>
+                      <td><?php echo $val['logros']; ?></td>
+                      <td><?php echo $val['ingles'];?></td>
+                      <td><?php echo $val['ser'];?></td>
+                      <td><?php echo $val['asistencia'];?></td>
+                      <td><?php echo $val['skills'];?></td>
+                      <td><?php echo $val['especialidad'];?></td>
+
+
+                      <td><a href="borrarEstudiantes.php?id=<?= $val['id'] ?>&req=delete" class="<?php echo $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
+                  </tr>
+                  <?php
               }
-            ?>
+              ?>
+
 
           </tbody>
         
@@ -119,7 +158,8 @@ $all = $data -> obtainAll();
                   type="text"
                   id="nombres"
                   name="nombres"
-                  class="form-control"  
+                  class="form-control"
+                  required
                 />
               </div>
 
@@ -129,7 +169,8 @@ $all = $data -> obtainAll();
                   type="text"
                   id="direccion"
                   name="direccion"
-                  class="form-control"  
+                  class="form-control"
+                  required
                 />
               </div>
 
@@ -140,7 +181,7 @@ $all = $data -> obtainAll();
                   id="logros"
                   name="logros"
                   class="form-control"  
-                 
+                  required
                 />
               </div>
 
