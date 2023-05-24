@@ -1,3 +1,10 @@
+<?php
+require_once("config.php");
+
+$data = new Config();
+
+$all = $data -> obtainAll();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -53,7 +60,7 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">NOMBRES</th>
+              <th scope="col">NOMBREs</th>
               <th scope="col">DIRECCION</th>
               <th scope="col">LOGROS</th>
               <th scope="col">DETALLE</th>
@@ -62,8 +69,19 @@
           <tbody class="" id="tabla">
 
             <!-- ///////Llenado DInamico desde la Base de Datos -->
-         
-       
+            <?php
+              foreach($all as $key => $val){                   
+            ?>
+            <tr>
+              <td><?php echo $val['id']; ?></td>
+              <td><?php echo $val['nombres'];?></td>
+              <td><?php echo $val['direccion'];?></td>
+              <td><?php echo $val['logros'];?></td>
+              
+            </tr>
+            <?php
+              }
+            ?>
 
           </tbody>
         
@@ -94,7 +112,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" action="registrarEstudiantes.php" method="post" >
+            <form class="col d-flex flex-wrap" action="registrarEstudiantes.php" method="post">
               <div class="mb-1 col-12">
                 <label for="nombres" class="form-label">Nombres</label>
                 <input 
@@ -143,4 +161,4 @@
 
 </body>
 
-</html> 
+</html>
