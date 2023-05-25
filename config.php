@@ -1,4 +1,9 @@
 <?php
+ini_set("display_errors", 1);
+
+ini_set("display_startup_errors", 1);
+
+error_reporting(E_ALL); 
 require_once("db.php");
 
 class Config{
@@ -127,8 +132,7 @@ class Config{
         $stm = $this-> dbCnx -> prepare("DELETE FROM camper WHERE id =?");
         $stm -> execute(array($this->id));
         return $stm -> fetchAll();
-        echo "
-              <script> alert('Registro eliminado');
+        echo " <script> alert('Registro eliminado');
               document.location='estudiantes.php'
               </script>";
       } catch (Exception $e) {

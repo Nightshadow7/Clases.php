@@ -194,16 +194,16 @@ $all = $data -> obtainAll();
 
               <div class="mb-1 col-12">
                 <label for="logros" class="form-label">Review</label>
-                <select required class="form-select" aria-label="Default select example">
+                <select required class="form-select" aria-label="Default select example" name="review">
                   <option selected>Open this select menu</option>
-                  <option value="1">Excelente</option>
-                  <option value="2">Bueno</option>
-                  <option value="3">Aceptable</option>
-                  <option value="4">Regular</option>
-                  <option value="5">Podria Mejorar</option>
-                  <option value="6">Horrible</option>
-                  <option value="7">Inaceptable</option>
-                  <option value="8">Nose / No respondo</option>
+                  <option value="Exelente">Excelente</option>
+                  <option value="Bueno">Bueno</option>
+                  <option value="Aceptable">Aceptable</option>
+                  <option value="Regular">Regular</option>
+                  <option value="Podria Mejorar">Podria Mejorar</option>
+                  <option value="Horrible">Horrible</option>
+                  <option value="Inaceptable">Inaceptable</option>
+                  <option value="Nose / No respondo">Nose / No respondo</option>
                 </select>
               </div>
 
@@ -220,15 +220,15 @@ $all = $data -> obtainAll();
 
               <div class="mb-1 col-12">
                 <label for="logros" class="form-label">Ingles</label>
-                <select required class="form-select" aria-label="Default select example">
+                <select required class="form-select" aria-label="Default select example" name="ingles">
                   <option selected>Open this select menu</option>
-                  <option value="1">A1</option>
-                  <option value="2">A2</option>
-                  <option value="3">B1</option>
-                  <option value="4">B2</option>
-                  <option value="5">C1</option>
-                  <option value="6">C2</option>
-                  <option value="7">Nose / No respondo</option>
+                  <option value="A1">A1</option>
+                  <option value="A2">A2</option>
+                  <option value="B1">B1</option>
+                  <option value="B2">B2</option>
+                  <option value="C1">C1</option>
+                  <option value="C2">C2</option>
+                  <option value="Nose / No respondo">Nose / No respondo</option>
                 </select>
               </div>
 
@@ -245,23 +245,62 @@ $all = $data -> obtainAll();
 
               <div class="mb-1 col-12">
                 <label for="logros" class="form-label">Asistencia</label>
-                <select required class="form-select" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">Review</option>
-                  <option value="2">Ser</option>
-                  <option value="3">Ingles</option>
-                  <option value="4">Skills</option>
-                  <option value="5">Nose / No respondo</option>
-                </select>
+                <!--<select required class="form-select" aria-label="Default select example" name="asistencia">
+                   <option selected>Open this select menu</option>
+                  <option value="Review">Review</option>
+                  <option value="Ser">Ser</option>
+                  <option value="Ingles">Ingles</option>
+                  <option value="Skills">Skills</option>
+                  <option value="Nose / No respondo">Nose / No respondo</option>
+                  <option value="">
+                  <option value="Review">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="review">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Review
+                      </label>
+                    </div>
+                  </option>                 
+                    
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="Ser">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Ser
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="Ingles">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Ingles
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="Skills">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Skills
+                      </label>
+                    </div>
+                  </option>
+                </select> -->
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Asistencia
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li></li>
+                    <li><a class="dropdown-item" href="#">Otra acción</a></li>
+                    <li><a class="dropdown-item" href="#">Algo más aqui</a></li>
+                  </ul>
+                </div>
               </div>
 
               <div class="mb-1 col-12">
                 <label for="logros" class="form-label">Especialidad</label>
-                <select required class="form-select" aria-label="Default select example">
+                <select required class="form-select" aria-label="Default select example" name="especialidad">
                   <option selected>Open this select menu</option>
-                  <option value="1">Front-End</option>
-                  <option value="2">Back-End</option>
-                  <option value="3">Full-Stack</option>
+                  <option value="Front-End">Front-End</option>
+                  <option value="Back-End">Back-End</option>
+                  <option value="Full-Stack">Full-Stack</option>
                 </select>
               </div>
 
