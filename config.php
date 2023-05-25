@@ -114,7 +114,7 @@ class Config{
             $stm -> bindParam(':espec', $this->especialidad); */
             $stm -> execute(array($this->nombres, $this->direccion, $this->logros, $this->review, $this->ser, $this->ingles, $this->skills, $this->asistencia, $this->especialidad));
         } catch (Exception $e) {
-            return $e->getMessages();
+          return $e->getMessages();
         }
 
     }
@@ -135,6 +135,23 @@ class Config{
         echo " <script> alert('Registro eliminado');
               document.location='estudiantes.php'
               </script>";
+      } catch (Exception $e) {
+        return $e->getMessages();
+      }
+    }
+    public function selectOne(){
+      try {
+        $stm = $this-> dbCnx -> prepare("SELECT * FROM camper WHERE id =?");
+        $stm -> execute(array($this->id));
+        return $stm -> fetchAll();
+      } catch (Exception $e) {
+        return $e->getMessages();
+      }
+    }
+    public function update(){
+      try {
+        $stm = $this-> dbCnx -> prepare("UPDATE camper SET nombres=?, direccion=?, logros=? WHERE id =?");
+        $stm -> execute(array($this->nombres, $this->direccion, $this->logros, $this->id ));
       } catch (Exception $e) {
         return $e->getMessages();
       }

@@ -76,55 +76,80 @@ $all = $data -> obtainAll();
             <!-- ///////Llenado DInamico desde la Base de Datos -->
             <?php
               foreach ($all as $key => $val) {
+                $color = rand(1, 7);
+                $color2 = rand(1,7);
+                while($color===$color2){
                   $color = rand(1, 7);
-                  switch ($color) {
-                      case 1:
-                          $but = "btn btn-outline-primary";
-                          break;
-                      case 2:
-                          $but = "btn btn-outline-secondary";
-                          break;
-                      case 3:
-                          $but = "btn btn-outline-success";
-                          break;
-                      case 4:
-                          $but = "btn btn-outline-danger";
-                          break;
-                      case 5:
-                          $but = "btn btn-outline-warning";
-                          break;
-                      case 6:
-                          $but = "btn btn-outline-info";
-                          break;
-                      case 7:
-                          $but = "btn btn-outline-light";
-                          break;
-                      default:
-                          $but = "btn btn-outline-danger";
-                          break;
-                  }
-                  /* for ($i= id; $i< str_len($all);$i++){
-                    for($j=$i+1; $j>$i; $j++){
-
-                    }
-                  } */
-                  ?>
-                  <tr>
-                      <td><?php echo $val['id']; ?></td>
-                      <td><?php echo $val['nombres']; ?></td>
-                      <td><?php echo $val['direccion']; ?></td>
-                      <td><?php echo $val['logros']; ?></td>
-                      <td><?php echo $val['review'];?></td>
-                      <td><?php echo $val['ingles'];?></td>
-                      <td><?php echo $val['ser'];?></td>
-                      <td><?php echo $val['asistencia'];?></td>
-                      <td><?php echo $val['skills'];?></td>
-                      <td><?php echo $val['especialidad'];?></td>
-
-
-                      <td><a href="borrarEstudiantes.php?id=<?= $val['id'] ?>&req=delete" class="<?php echo $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
-                  </tr>
-                  <?php
+                  $color2 = rand(1,7);
+                }
+                switch ($color) {
+                  case 1:
+                    $but = "btn btn-outline-primary";
+                    break;
+                  case 2:
+                    $but = "btn btn-outline-secondary";
+                    break;
+                  case 3:
+                    $but = "btn btn-outline-success";
+                    break;
+                  case 4:
+                    $but = "btn btn-outline-danger";
+                    break;
+                  case 5:
+                    $but = "btn btn-outline-warning";
+                    break;
+                  case 6:
+                    $but = "btn btn-outline-info";
+                    break;
+                  case 7:
+                    $but = "btn btn-outline-light";
+                    break;
+                  default:
+                    $but = "btn btn-outline-danger";
+                    break;
+                }
+                switch ($color2) {
+                  case 1:
+                    $bot = "btn btn-outline-primary";
+                    break;
+                  case 2:
+                    $bot = "btn btn-outline-secondary";
+                    break;
+                  case 3:
+                    $bot = "btn btn-outline-success";
+                    break;
+                  case 4:
+                    $bot = "btn btn-outline-danger";
+                    break;
+                  case 5:
+                    $bot = "btn btn-outline-warning";
+                    break;
+                  case 6:
+                    $bot = "btn btn-outline-info";
+                    break;
+                  case 7:
+                    $bot = "btn btn-outline-light";
+                    break;
+                  default:
+                    $bot = "btn btn-outline-danger";
+                    break;
+                }
+            ?>
+            <tr>
+                <td><?php echo $val['id']; ?></td>
+                <td><?php echo $val['nombres']; ?></td>
+                <td><?php echo $val['direccion']; ?></td>
+                <td><?php echo $val['logros']; ?></td>
+                <td><?php echo $val['review'];?></td>
+                <td><?php echo $val['ingles'];?></td>
+                <td><?php echo $val['ser'];?></td>
+                <td><?php echo $val['asistencia'];?></td>
+                <td><?php echo $val['skills'];?></td>
+                <td><?php echo $val['especialidad'];?></td>
+                <td><a href="borrarEstudiantes.php?id=<?= $val['id'] ?>&req=delete" class="<?php echo $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
+                <td><a href="actualizarEstudiantes.php?id=<?= $val['id']?>" class="<?php echo $bot?>"><i class="bi bi-pencil"></i>Editar</a></td>
+            </tr>
+            <?php
               }
               ?>
 
@@ -163,6 +188,7 @@ $all = $data -> obtainAll();
                 <label for="nombres" class="form-label">Nombres</label>
                 <input 
                   type="text"
+                  placeholder="Dijite su nombre"
                   id="nombres"
                   name="nombres"
                   class="form-control"
@@ -174,9 +200,10 @@ $all = $data -> obtainAll();
                 <label for="direccion" class="form-label">Direccion</label>
                 <input 
                   type="text"
+                  placeholder="Ingrese su direccion"
                   id="direccion"
                   name="direccion"
-                  class="form-control"
+                  class="form-control" 
                   required
                 />
               </div>
@@ -185,9 +212,10 @@ $all = $data -> obtainAll();
                 <label for="logros" class="form-label">Logros</label>
                 <input 
                   type="text"
+                  placeholder="Ingrese sus logros"
                   id="logros"
                   name="logros"
-                  class="form-control"  
+                  class="form-control" 
                   required
                 />
               </div>
@@ -195,7 +223,7 @@ $all = $data -> obtainAll();
               <div class="mb-1 col-12">
                 <label for="logros" class="form-label">Review</label>
                 <select required class="form-select" aria-label="Default select example" name="review">
-                  <option selected>Open this select menu</option>
+                  <option selected>Valoracion de review</option>
                   <option value="Exelente">Excelente</option>
                   <option value="Bueno">Bueno</option>
                   <option value="Aceptable">Aceptable</option>
@@ -203,14 +231,14 @@ $all = $data -> obtainAll();
                   <option value="Podria Mejorar">Podria Mejorar</option>
                   <option value="Horrible">Horrible</option>
                   <option value="Inaceptable">Inaceptable</option>
-                  <option value="Nose / No respondo">Nose / No respondo</option>
                 </select>
               </div>
 
-              <div class="mb-1 col-12">
+              <div class="mb-1 col-6">
                 <label for="logros" class="form-label">Ser</label>
                 <input 
                   type="number"
+                  placeholder="Nota de ser"
                   id="ser"
                   name="ser"
                   class="form-control"  
@@ -218,86 +246,49 @@ $all = $data -> obtainAll();
                 />
               </div>
 
-              <div class="mb-1 col-12">
+              <div class="mb-1 col-6">
                 <label for="logros" class="form-label">Ingles</label>
                 <select required class="form-select" aria-label="Default select example" name="ingles">
-                  <option selected>Open this select menu</option>
+                  <option selected>Nivel de ingles</option>
                   <option value="A1">A1</option>
                   <option value="A2">A2</option>
                   <option value="B1">B1</option>
                   <option value="B2">B2</option>
                   <option value="C1">C1</option>
                   <option value="C2">C2</option>
-                  <option value="Nose / No respondo">Nose / No respondo</option>
                 </select>
               </div>
 
-              <div class="mb-1 col-12">
+              <div class="mb-1 col-6">
                 <label for="logros" class="form-label">Skills</label>
                 <input 
                   type="number"
+                  placeholder="Nota de skills"
                   id="skills"
                   name="skills"
-                  class="form-control"  
+                  class="form-control"
                   required
                 />
               </div>
 
-              <div class="mb-1 col-12">
+              <div class="mb-1 col-6">
                 <label for="logros" class="form-label">Asistencia</label>
-                <!--<select required class="form-select" aria-label="Default select example" name="asistencia">
-                   <option selected>Open this select menu</option>
+                <select required class="form-select" aria-label="Default select example" name="asistencia">
+                  <option selected>Asistencia</option>
                   <option value="Review">Review</option>
                   <option value="Ser">Ser</option>
                   <option value="Ingles">Ingles</option>
                   <option value="Skills">Skills</option>
-                  <option value="Nose / No respondo">Nose / No respondo</option>
-                  <option value="">
-                  <option value="Review">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="review">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Review
-                      </label>
-                    </div>
-                  </option>                 
-                    
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="Ser">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Ser
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="Ingles">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Ingles
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="Skills">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Skills
-                      </label>
-                    </div>
-                  </option>
-                </select> -->
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Asistencia
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li></li>
-                    <li><a class="dropdown-item" href="#">Otra acción</a></li>
-                    <li><a class="dropdown-item" href="#">Algo más aqui</a></li>
-                  </ul>
-                </div>
+                  <option value="Ninguna">Ninguna</option>
+                </select>
               </div>
+              
+            
 
               <div class="mb-1 col-12">
                 <label for="logros" class="form-label">Especialidad</label>
                 <select required class="form-select" aria-label="Default select example" name="especialidad">
-                  <option selected>Open this select menu</option>
+                  <option selected>Especialidad</option>
                   <option value="Front-End">Front-End</option>
                   <option value="Back-End">Back-End</option>
                   <option value="Full-Stack">Full-Stack</option>
@@ -322,3 +313,4 @@ $all = $data -> obtainAll();
 </body>
 
 </html>
+
