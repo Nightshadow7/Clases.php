@@ -1,65 +1,9 @@
 <?php
-  $color = rand(1, 7);
-  $color2 = rand(1,7);
-  
-  while($color===$color2):
-    $color = rand(1, 7);
-    $color2 = rand(1,7);
-  endwhile;
-  
-  switch ($color):
-    case 1:
-      $but = "btn btn-outline-primary";
-      break;
-    case 2:
-      $but = "btn btn-outline-secondary";
-      break;
-    case 3:
-      $but = "btn btn-outline-success";
-      break;
-    case 4:
-      $but = "btn btn-outline-danger";
-      break;
-    case 5:
-      $but = "btn btn-outline-warning";
-      break;
-    case 6:
-      $but = "btn btn-outline-info";
-      break;
-    case 7:
-      $but = "btn btn-outline-light";
-      break;
-    default:
-      $but = "btn btn-outline-danger";
-      break;
-  endswitch;
-  
-  switch ($color2):
-    case 1:
-      $bot = "btn btn-outline-primary";
-      break;
-    case 2:
-      $bot = "btn btn-outline-secondary";
-      break;
-    case 3:
-      $bot = "btn btn-outline-success";
-      break;
-    case 4:
-      $bot = "btn btn-outline-danger";
-      break;
-    case 5:
-      $bot = "btn btn-outline-warning";
-      break;
-    case 6:
-      $bot = "btn btn-outline-info";
-      break;
-    case 7:
-      $bot = "btn btn-outline-light";
-      break;
-    default:
-      $bot = "btn btn-outline-danger";
-      break;
-  endswitch;
+require_once("configuracionProveedores.php");
+
+$data = new Proveedores();
+
+$all = $data -> getAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,62 +74,51 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                        <form class="col d-flex flex-wrap" action="registrarEstudiantes.php" method="post">
-              <div class="mb-1 col-12">
-                <label for="nombre_" class="form-label">Nombres</label>
-                <input 
-                  type="text"
-                  placeholder="Dijite su nombre"
-                  id="nombres"
-                  name="nombres"
-                  class="form-control"
-                  required
-                />
-              </div>
+                          <form class="col d-flex flex-wrap" action="registrarProveedores.php" method="post">
+                            <div class="mb-1 col-12">
+                              <label for="nombre_proveedor" class="form-label">Nombres</label>
+                              <input 
+                                type="text"
+                                placeholder="Dijite su nombre"
+                                id="nombre_proveedor"
+                                name="nombre_proveedor"
+                                class="form-control"
+                                required
+                              />
+                            </div>
 
-              <div class="mb-1 col-12">
-                <label for="direccion" class="form-label">Direccion</label>
-                <input 
-                  type="text"
-                  placeholder="Ingrese su direccion"
-                  id="direccion"
-                  name="direccion"
-                  class="form-control" 
-                  required
-                />
-              </div>
+                            <div class="mb-1 col-12">
+                              <label for="telefono_proveedor" class="form-label">Telefono</label>
+                              <input 
+                                type="number"
+                                placeholder="Dijite su numero de telefono"
+                                id="telefono_proveedor"
+                                name="telefono_proveedor"
+                                class="form-control" 
+                                required
+                              />
+                            </div>
 
-              <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Logros</label>
-                <input 
-                  type="text"
-                  placeholder="Ingrese sus logros"
-                  id="logros"
-                  name="logros"
-                  class="form-control" 
-                  required
-                />
-              </div>
+                            <div class="mb-1 col-12">
+                              <label for="ciudad_proveedor" class="form-label">Ciudad</label>
+                              <input 
+                                type="text"
+                                placeholder="Dijite su ciudad"
+                                id="ciudad_proveedor"
+                                name="ciudad_proveedor"
+                                class="form-control" 
+                                required
+                              />
+                            </div>
+                
+                            <div class=" col-12 m-2">
+                              <input type="submit" class="btn btn-primary" value="guardar" name="guardar"/>
+                            </div>
 
-              <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Review</label>
-                <select required class="form-select" aria-label="Default select example" name="review">
-                  <option selected>Valoracion de review</option>
-                  <option value="Exelente">Excelente</option>
-                  <option value="Bueno">Bueno</option>
-                  <option value="Aceptable">Aceptable</option>
-                  <option value="Regular">Regular</option>
-                  <option value="Podria Mejorar">Podria Mejorar</option>
-                  <option value="Horrible">Horrible</option>
-                  <option value="Inaceptable">Inaceptable</option>
-                </select>
-              </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
+                          </form>  
                         </div>
                       </div>
+                      
                     </div>
                   </div>
                   <table class="table table-custom ">
@@ -196,176 +129,94 @@
                         <th class="barra" scope="col">TELEFONO</th>
                         <th class="barra" scope="col">CIUDAD</th>
                         <th class="barra" scope="col">BORAR</th>
+                        <th class="barra" scope="col">EDITAR</th>
                       </tr>
                     </thead>
                     <tbody class="" id="tabla">
+                      <?php
+                        foreach ($all as $key => $val){
+                          $color = rand(1, 7);
+                          $color2 = rand(1,7);
+                          
+                          while($color===$color2):
+                            $color = rand(1, 7);
+                            $color2 = rand(1,7);
+                          endwhile;
+                          
+                          switch ($color):
+                            case 1:
+                              $but = "btn btn-outline-primary";
+                              break;
+                            case 2:
+                              $but = "btn btn-outline-secondary";
+                              break;
+                            case 3:
+                              $but = "btn btn-outline-success";
+                              break;
+                            case 4:
+                              $but = "btn btn-outline-danger";
+                              break;
+                            case 5:
+                              $but = "btn btn-outline-warning";
+                              break;
+                            case 6:
+                              $but = "btn btn-outline-info";
+                              break;
+                            case 7:
+                              $but = "btn btn-outline-light";
+                              break;
+                            default:
+                              $but = "btn btn-outline-danger";
+                              break;
+                          endswitch;
+                          
+                          switch ($color2):
+                            case 1:
+                              $bot = "btn btn-outline-primary";
+                              break;
+                            case 2:
+                              $bot = "btn btn-outline-secondary";
+                              break;
+                            case 3:
+                              $bot = "btn btn-outline-success";
+                              break;
+                            case 4:
+                              $bot = "btn btn-outline-danger";
+                              break;
+                            case 5:
+                              $bot = "btn btn-outline-warning";
+                              break;
+                            case 6:
+                              $bot = "btn btn-outline-info";
+                              break;
+                            case 7:
+                              $bot = "btn btn-outline-light";
+                              break;
+                            default:
+                              $bot = "btn btn-outline-danger";
+                              break;
+                          endswitch;
+                      ?>
                       <tr>
-                        <!-- <td> $val['id_proveedor']; ?></td>
-                        <td> $val['nombre_proveedor']; ?></td>
-                        <td> $val['telefono_proveedor']; ?></td>
-                        <td> $val['ciudad_proveedor']; ?></td> -->
+                        <td> <?= $val['id_proveedor']; ?></td>
+                        <td> <?= $val['nombre_proveedor']; ?></td>
+                        <td> <?= $val['telefono_proveedor']; ?></td>
+                        <td> <?= $val['ciudad_proveedor']; ?></td>
                         <td><a href="borrarProveedores.php?id=<?= $val['id'] ?>&req=delete" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
                         <td><a href="actualizarProveedores.php?id=<?= $val['id']?>" class="<?= $bot?>"><i class="bi bi-pencil"></i>Editar</a></td>
                       </tr>
+                      <?php } ?>
                     </tbody>
                   </table>
-                  
-                  
-
                 </div>
             </div>
         </div>
     </header>
-
-    <div class="modal fade" id="registrarProveedor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="backdrop-filter: blur(5px)">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
-        <div class="modal-content" >
-          <div class="modal-header" >
-            <h1 class="modal-title fs-5 pt-5 mt-5 barra" id="exampleModalLabel">Nuevo Proveedor</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" action="registrarEstudiantes.php" method="post">
-              <div class="mb-1 col-12">
-                <label for="nombre_" class="form-label">Nombres</label>
-                <input 
-                  type="text"
-                  placeholder="Dijite su nombre"
-                  id="nombres"
-                  name="nombres"
-                  class="form-control"
-                  required
-                />
-              </div>
-
-              <div class="mb-1 col-12">
-                <label for="direccion" class="form-label">Direccion</label>
-                <input 
-                  type="text"
-                  placeholder="Ingrese su direccion"
-                  id="direccion"
-                  name="direccion"
-                  class="form-control" 
-                  required
-                />
-              </div>
-
-              <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Logros</label>
-                <input 
-                  type="text"
-                  placeholder="Ingrese sus logros"
-                  id="logros"
-                  name="logros"
-                  class="form-control" 
-                  required
-                />
-              </div>
-
-              <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Review</label>
-                <select required class="form-select" aria-label="Default select example" name="review">
-                  <option selected>Valoracion de review</option>
-                  <option value="Exelente">Excelente</option>
-                  <option value="Bueno">Bueno</option>
-                  <option value="Aceptable">Aceptable</option>
-                  <option value="Regular">Regular</option>
-                  <option value="Podria Mejorar">Podria Mejorar</option>
-                  <option value="Horrible">Horrible</option>
-                  <option value="Inaceptable">Inaceptable</option>
-                </select>
-              </div>
-
-              <div class="mb-1 col-6">
-                <label for="logros" class="form-label">Ser</label>
-                <input 
-                  type="number"
-                  placeholder="Nota de ser"
-                  id="ser"
-                  name="ser"
-                  class="form-control"  
-                  required
-                />
-              </div>
-
-              <div class="mb-1 col-6">
-                <label for="logros" class="form-label">Ingles</label>
-                <select required class="form-select" aria-label="Default select example" name="ingles">
-                  <option selected>Nivel de ingles</option>
-                  <option value="A1">A1</option>
-                  <option value="A2">A2</option>
-                  <option value="B1">B1</option>
-                  <option value="B2">B2</option>
-                  <option value="C1">C1</option>
-                  <option value="C2">C2</option>
-                </select>
-              </div>
-
-              <div class="mb-1 col-6">
-                <label for="logros" class="form-label">Skills</label>
-                <input 
-                  type="number"
-                  placeholder="Nota de skills"
-                  id="skills"
-                  name="skills"
-                  class="form-control"
-                  required
-                />
-              </div>
-
-              <div class="mb-1 col-6">
-                <label for="logros" class="form-label">Asistencia</label>
-                <select required class="form-select" aria-label="Default select example" name="asistencia">
-                  <option selected>Asistencia</option>
-                  <option value="Review">Review</option>
-                  <option value="Ser">Ser</option>
-                  <option value="Ingles">Ingles</option>
-                  <option value="Skills">Skills</option>
-                  <option value="Ninguna">Ninguna</option>
-                </select>
-              </div>
-              
-            
-
-              <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Especialidad</label>
-                <select required class="form-select" aria-label="Default select example" name="especialidad">
-                  <option selected>Especialidad</option>
-                  <option value="Front-End">Front-End</option>
-                  <option value="Back-End">Back-End</option>
-                  <option value="Full-Stack">Full-Stack</option>
-                </select>
-              </div>
-
-              <div class=" col-12 m-2">
-                <input type="submit" class="btn btn-primary" value="guardar" name="guardar"/>
-              </div>
-            </form>  
-         </div>       
-        </div>
-      </div>
-    </div>
-    <!-- <div class="social-wrapper" id="features">
-        <div class="container">
-            <div class="social-txt">
-                <h6 class="title">Social Media</h6>
-                <p class="subtitle">"Follow us to stay up-to-date with the latest news and promotions!" <br>"Connect with us on social media for exclusive content and exciting updates."</p>
-            </div>
-            <div class="social-links">
-                <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
-                <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>
-                <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
-                <a href="javascript:void(0)" class="link"><i class="ti-pinterest-alt"></i></a>
-                <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
-                <a href="javascript:void(0)" class="link"><i class="ti-rss"></i></a>
-            </div>
-        </div>          
-    </div> -->
     
     <script src="../assets/vendors/jquery/jquery-3.4.1.js"></script>
     <script src="../assets/vendors/bootstrap/bootstrap.bundle.js"></script>
-    <!-- bootstrap 3 affix -->
-	<script src="../assets/vendors/bootstrap/bootstrap.affix.js"></script>
+    <!-- bootstrap affix -->
+	  <script src="../assets/vendors/bootstrap/bootstrap.affix.js"></script>
 
 
     <script src="../assets/js/rubic.js"></script>
