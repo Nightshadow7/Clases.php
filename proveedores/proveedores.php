@@ -116,6 +116,78 @@
         <div class="container">
             <div class="row ">
                 <div class="col-md-8 pt-5 mt-5 text-center">
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary m-4" data-bs-toggle="modal" data-bs-target="#registrarProveedor">
+                    Registrar Proveedor
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="registrarProveedor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title mt-5 bg-success" id="exampleModalLabel">Nuevo Proveedor</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form class="col d-flex flex-wrap" action="registrarEstudiantes.php" method="post">
+              <div class="mb-1 col-12">
+                <label for="nombre_" class="form-label">Nombres</label>
+                <input 
+                  type="text"
+                  placeholder="Dijite su nombre"
+                  id="nombres"
+                  name="nombres"
+                  class="form-control"
+                  required
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="direccion" class="form-label">Direccion</label>
+                <input 
+                  type="text"
+                  placeholder="Ingrese su direccion"
+                  id="direccion"
+                  name="direccion"
+                  class="form-control" 
+                  required
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="logros" class="form-label">Logros</label>
+                <input 
+                  type="text"
+                  placeholder="Ingrese sus logros"
+                  id="logros"
+                  name="logros"
+                  class="form-control" 
+                  required
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="logros" class="form-label">Review</label>
+                <select required class="form-select" aria-label="Default select example" name="review">
+                  <option selected>Valoracion de review</option>
+                  <option value="Exelente">Excelente</option>
+                  <option value="Bueno">Bueno</option>
+                  <option value="Aceptable">Aceptable</option>
+                  <option value="Regular">Regular</option>
+                  <option value="Podria Mejorar">Podria Mejorar</option>
+                  <option value="Horrible">Horrible</option>
+                  <option value="Inaceptable">Inaceptable</option>
+                </select>
+              </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <table class="table table-custom ">
                     <thead>
                       <tr>
@@ -138,29 +210,7 @@
                     </tbody>
                   </table>
                   
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Launch demo modal
-                  </button>
-
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          ...
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
 
                 </div>
             </div>
