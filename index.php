@@ -1,140 +1,109 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <title>Supermarket</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Rubic landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Supermarket</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + Rubic main styles -->
+	<link rel="stylesheet" href="assets/css/rubic.css">
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/simplegrid.css">
-        <link rel="stylesheet" href="css/icomoon.css">
-        <link rel="stylesheet" href="css/lightcase.css">
-        <link rel="stylesheet" href="js/owl-carousel/owl.carousel.css" />
-        <link rel="stylesheet" href="js/owl-carousel/owl.theme.css" />
-        <link rel="stylesheet" href="js/owl-carousel/owl.transitions.css" />
-        <link rel="stylesheet" href="style.css">
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-        </head>
-        <body id="home">
-            <!-- Header -->
-            <header id="top-header" class="header-home">
-                <div class="grid">
-                    <div class="col-1-1">
-                        <div class="content">
-                            <div class="logo-wrap">
-                                <p class="logo">Supermarket</p> 
-                            </div>
-                            
-                            <nav class="navigation">
-                                
-                                <input type="checkbox" id="nav-button">
-                                <label for="nav-button" onclick></label>
-                                <ul class="nav-container">
-                                    <li><button type="button" class="btn btn-outline-dark px-4"><a href="">Categorias</a></button></li>
-                                    <li><button type="button" class="btn btn-outline-dark px-4"><a href="">Clientes</a></button></li>
-                                    <li><button type="button" class="btn btn-outline-dark px-4"><a href="">Empleados</a></button></li>
-                                    <li><button type="button" class="btn btn-outline-dark px-4"><a href="">Facturas</a></button></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <!-- End Header -->
+    <nav id="scrollspy" class="navbar page-navbar navbar-dark navbar-expand-md fixed-top" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="navbar-brand" href="./index.php"><strong class="text-primary">SUPER</strong><span class="text-light">MARKET</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <!-- Parallax Section -->
-            <div class="parallax-section parallax1">
-                <div class="grid grid-pad">
-                    <div class="col-1-1">
-                         <div class="content content-header" >
-                            <h2>Your Shopping Destination</h2>
-                            <p>Discover Central Supermarket, your reliable destination for all your shopping needs. We offer a wide selection of fresh produce, groceries, and household items. Our goal is to provide you with an exceptional shopping experience, with high-quality products and a friendly team ready to assist you. Find everything you need in one place and enjoy a hassle-free shopping experience. Visit us today and discover the convenience and quality of Central Supermarket.</p>
-                            
-                        </div>
-                    </div>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./categorias/categorias.php">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./clientes/clientes.php">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./empleados/empleados.php">Empleados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./proveedores/proveedores.php">Proveedores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./productos/productos.php">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-dark shadow-none ml-md-4" href="./facturacion/facturacion.php"><i class="bi bi-receipt"></i>Facturacion</a>
+                    </li>
+                </ul>
             </div>
-            <!-- End Parallax Section -->
-
-            <!-- CurveUp -->
-            <svg class="curveUpColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <path d="M0 100 C 20 0 50 0 100 100 Z"></path>
-            </svg>
-
-            <!-- Services Section -->
-            <div class="wrap services-wrap" id="services">
-                <section class="grid grid-pad services">
-                    <h2></h2>
-                    <div class="col-1-4 service-box service-1" >
-                        <div class="content">
-                            <div class="service-icon">
-                                <i class="circle-icon icon-heart4"></i>
+        </div>
+    </nav>
+    <header class="header d-flex justify-content-center">
+        <div class="container">
+            <div class="row h-100 align-items-center">
+                <div class="col-md-7">
+                    <div class="header-content">
+                        <h3 class="header-title"><strong class="text-primary">SUPER</strong><span>MARKET</span></h3>
+                        <h4 class="header-subtitle">Your Shopping Destination</h4>
+                        <p>Discover Central Supermarket, your reliable destination for all your shopping needs. We offer a wide selection of fresh produce, groceries, and household items. Our goal is to provide you with an exceptional shopping experience, with high-quality products and a friendly team ready to assist you. Find everything you need in one place and enjoy a hassle-free shopping experience. Visit us today and discover the convenience and quality of Central Supermarket.</p>
+                        <button class="btn btn-outline-light btn-flat">Download</button>
+                    </div>  
+                </div>
+                <div class="col-md-5 d-none d-md-block">
+                    <form class="header-form">
+                        <div class="head">Login <span class="text-primary">TO</span> PRACTICE.</div>
+                        <div class="body">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name*">
                             </div>
-                            <div class="service-entry">
-                                <h3>Category</h3>
-                                <p>Explore our diverse range of products.</p>
-                                <a class="btn read-more" href="#0">ADD</a>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email*">
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-1-4 service-box service-2" >
-                        <div class="content">
-                            <div class="service-icon">
-                                <i class="circle-icon icon-star4"></i>
-                            </div>
-                            <div class="service-entry">
-                                <h3>Clients</h3>
-                                <p>Our top priority, providing exceptional service.</p>
-                                <a class="btn read-more" href="#0">ADD</a>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password*">
                             </div>
                         </div>
-                    </div>
-                    <div class="col-1-4 service-box service-3">
-                        <div class="content">
-                            <div class="service-icon">
-                                <i class="circle-icon icon-user6"></i>
-                            </div>
-                            <div class="service-entry">
-                                <h3>Employees</h3>
-                                <p>Valued team members, fostering growth and success.</p>
-                                <a class="btn read-more" href="#0">ADD</a>
-                            </div>
+                        <div class="footer">
+                            <button class="btn btn-primary btn-block">Login</button>
                         </div>
-                    </div>
-                    <div class="col-1-4 service-box service-4" >
-                        <div class="content">
-                            <div class="service-icon">
-                                <i class="circle-icon icon-display"></i>
-                            </div>
-                            <div class="service-entry">
-                                <h3>Billing</h3>
-                                <p>Streamlined processes for accurate and efficient transactions.</p>
-                                <a class="btn read-more" href="#0">ADD</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                    </form> 
+                </div>
+            </div>  
+        </div>
+    </header>
+    <div class="social-wrapper" id="features">
+        <div class="container">
+            <div class="social-txt">
+                <h6 class="title">Social Media</h6>
+                <p class="subtitle">"Follow us to stay up-to-date with the latest news and promotions!" <br>"Connect with us on social media for exclusive content and exciting updates."</p>
             </div>
-            <!-- End Services Section -->
-            
-            <!-- CurveDown -->
-            <svg class="curveDownColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <path d="M0 0 C 50 100 80 100 100 0 Z"></path>
-            </svg>
+            <div class="social-links">
+                <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-pinterest-alt"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-rss"></i></a>
+            </div>
+        </div>          
+    </div>
+        
+	<!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <!-- bootstrap 3 affix -->
+	<script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
 
-            
+    <!-- Rubic js -->
+    <script src="assets/js/rubic.js"></script>
 
-                <!-- JS -->
-                <script src="js/jquery.js"></script>
-                <script src="js/main.js"></script>
-                <script src="js/mixitup.js"></script>
-                <script src="js/smoothscroll.js"></script>
-                <script src="js/jquery.nav.js"></script>
-                <script src="js/owl-carousel/owl.carousel.min.js"></script>
-                <script src="https://maps.googleapis.com/maps/api/js"></script>
-                <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-                <script src="js/jquery.counterup.min.js"></script>
-                <script src="js/lightcase.min.js"></script>
-            </body>
-        </html>
+</body>
+</html>
