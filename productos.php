@@ -1,9 +1,19 @@
 <?php
-require_once("configuracionProveedores.php");
+// usado para encontrar errores
+ini_set("display_errors", 1);
+ini_set("display_startup_errors", 1);
+error_reporting(E_ALL);
 
-$data = new Proveedores();
-
-$all = $data -> getAll();
+require_once("configuracion.php");
+// creamos una nueva clase de la configuracion para productos
+$data = new Productos();
+$allData = $data->selectAll();
+/* sacamos las categorias*/
+$category = new Categoria();
+$allCategoria = $categoria->selectAll();
+/* sacamos los proveedores*/
+$proveedor = new Proveedores();
+$allProveedor = $proveedor->selectAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,58 +71,104 @@ $all = $data -> getAll();
             <div class="row ">
                 <div class="col-md-8 pt-5 mt-5 text-center">
                   <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary m-4" data-bs-toggle="modal" data-bs-target="#registrarProveedor">
-                    Registrar Proveedor
+                  <button type="button" class="btn btn-primary m-4" data-bs-toggle="modal" data-bs-target="#registrarProducto">
+                    Registrar Nuevo Producto
                   </button>
 
                   <!-- Modal -->
-                  <div class="modal fade" id="registrarProveedor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="registrarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title mt-5 bg-success" id="exampleModalLabel">Nuevo Proveedor</h5>
+                          <h5 class="modal-title mt-5 bg-success" id="exampleModalLabel">Nuevo Producto</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                          <form class="col d-flex flex-wrap" action="registrarProveedores.php" method="post">
+                          <form class="col d-flex flex-wrap" action="registrarProductos.php" method="post">
                             <div class="mb-1 col-12">
-                              <label for="nombre_proveedor" class="form-label">Nombres</label>
+                              <label for="nombre_del_producto" class="form-label">Nombre del producto</label>
                               <input 
                                 type="text"
-                                placeholder="Dijite su nombre"
-                                id="nombre_proveedor"
-                                name="nombre_proveedor"
+                                placeholder="Ingrese el nombre de un producto"
+                                id="nombre_del_producto"
+                                name="nombre_del_producto"
                                 class="form-control"
                                 required
                               />
                             </div>
 
                             <div class="mb-1 col-12">
-                              <label for="telefono_proveedor" class="form-label">Telefono</label>
+                              <label for="categoria" class="form-label">Categoria</label>
+                              <select name="categoria" id="categoria" class="form-select mb-1">
+                              <?php
+                                foreach ($allCategoria as $key => $val): 
+                                ?> 
+                                <option value="<?= $val['id_categoria']?>"><?= $val['nombre_cat']?></option>
+                              <?php 
+                              endforeach; 
+                              ?> 
+                              </select>
+                            </div>
+
+                            <div class="mb-1 col-12">
+                              <label for="proveedor" class="form-label">Proveedor</label>
+                              <select name="proveedor" id="proveedor" class="form-select mb-1">
+                              <?php
+                                foreach ($allProveedor as $key => $val): 
+                                ?> 
+                                <option value="<?= $val['id_proveedor']?>"><?= $val['nombre_proveedor']?></option>
+                              <?php 
+                              endforeach; 
+                              ?> 
+                              </select>
+                            </div>
+
+                            <div class="mb-1 col-12">
+                              <label for="stock" class="form-label">Stock</label>
                               <input 
                                 type="number"
-                                placeholder="Dijite su numero de telefono"
-                                id="telefono_proveedor"
-                                name="telefono_proveedor"
+                                placeholder="Dijite la cantidad de producto en inventario"
+                                id="stock"
+                                name="stock"
                                 class="form-control" 
                                 required
                               />
                             </div>
 
                             <div class="mb-1 col-12">
-                              <label for="ciudad_proveedor" class="form-label">Ciudad</label>
+                              <label for="precio_unitario" class="form-label">Precio por Unidad</label>
                               <input 
-                                type="text"
-                                placeholder="Dijite su ciudad"
-                                id="ciudad_proveedor"
-                                name="ciudad_proveedor"
+                                type="number"
+                                placeholder="Dijite El precio por unidad de producto"
+                                id="precio_unitario"
+                                name="precio_unitario"
                                 class="form-control" 
                                 required
                               />
                             </div>
+
+                            <div class="mb-1 col-12">
+                              <label for="unidades_pedidas" class="form-label">Cantidad de unidades Ordenadas</label>
+                              <input 
+                                type="number"
+                                placeholder="Dijite la cantidad de unidades Ordenadas"
+                                id="unidades_pedidas"
+                                name="unidades_pedidas"
+                                class="form-control" 
+                                required
+                              />
+                            </div>
+
+                            <div class="mb-1 col-12">
+                              <label for="descontinuado" class="form-label">¿Esta descontinuado?</label>
+                                <select name="descontinuado" id="descontinuado" class="form-select">
+                                  <option value="no">No</option>
+                                  <option value="si">Si</option>
+                                </select>
+                            </div>
                 
                             <div class=" col-12 m-2">
-                              <input type="submit" class="btn btn-primary" value="guardar" name="guardar"/>
+                              <button type="submit" class="btn btn-primary" value="productos" name="guardar">Agregar Producto</button>
                             </div>
 
                           </form>  
@@ -126,15 +182,20 @@ $all = $data -> getAll();
                       <tr>
                         <th class="barra" scope="col">#</th>
                         <th class="barra" scope="col">NOMBRE</th>
-                        <th class="barra" scope="col">TELEFONO</th>
-                        <th class="barra" scope="col">CIUDAD</th>
-                        <th class="barra" scope="col">BORAR</th>
-                        <th class="barra" scope="col">EDITAR</th>
+                        <th class="barra" scope="col">CATEGORIA</th>
+                        <th class="barra" scope="col">PROVEEDOR</th>
+                        <th class="barra" scope="col">PRECIO UNIDAD</th>
+                        <th class="barra" scope="col">STOCK</th>
+                        <th class="barra" scope="col">UNIDADES PEDIDAS</th>
+                        <th class="barra" scope="col">DESCONTINUADO</th>
+                        <th class="barra" scope="col">BORRAR</th>
+
+                        <!-- <th class="barra" scope="col">EDITAR</th> -->
                       </tr>
                     </thead>
                     <tbody class="" id="tabla">
                       <?php
-                        foreach ($all as $key => $val){
+                        foreach ($allData as $key => $val){
                           $color = rand(1, 7);
                           $color2 = rand(1,7);
                           
@@ -196,14 +257,19 @@ $all = $data -> getAll();
                               $bot = "btn btn-outline-danger";
                               break;
                           endswitch;
+                          $nomcate = $data->nameCate($val['id_categoria']);
+                          $nameprov = $data->nameProv($val['id_proveedor']);
                       ?>
                       <tr>
-                        <td> <?= $val['id_proveedor']; ?></td>
-                        <td> <?= $val['nombre_proveedor']; ?></td>
-                        <td> <?= $val['telefono_proveedor']; ?></td>
-                        <td> <?= $val['ciudad_proveedor']; ?></td>
-                        <td><a href="borrarProveedores.php?id=<?= $val['id'] ?>&req=delete" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
-                        <td><a href="actualizarProveedores.php?id=<?= $val['id']?>" class="<?= $bot?>"><i class="bi bi-pencil"></i>Editar</a></td>
+                        <td> <?= $val['id_producto']; ?></td>
+                        <td> <?= $val['nombre_del_producto']; ?></td>
+                        <td> <?= $namecate; ?></td>
+                        <td> <?= $nameprov; ?></td>
+                        <td> <?= $val['stock']; ?></td>
+                        <td> <?= $val['precio_unitario']; ?></td>
+                        <td> <?= $val['unidades_pedidas']; ?></td>
+                        <td> <?= $val['descontinuado']; ?></td>
+                        <td><a href="borrar.php?id=<?= $val['id_producto'] ?>&req=delete" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
                       </tr>
                       <?php } ?>
                     </tbody>

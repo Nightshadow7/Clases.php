@@ -32,27 +32,27 @@ CREATE TABLE proveedores(
     id_proveedor INT NOT NULL AUTO_INCREMENT,
     nombre_proveedor VARCHAR (255) NOT NULL,
     telefono_proveedor INT NOT NULL,
-    cuidad_proveedor VARCHAR (255) NOT NULL,
+    ciudad_proveedor VARCHAR (255) NOT NULL,
     PRIMARY KEY(id_proveedor)
 );
 CREATE TABLE productos(
     id_producto INT NOT NULL AUTO_INCREMENT,
-    id_categoria INT NOT NULL,
-    precio_unitario SMALLINT NOT NULL,
-    stock INT NOT NULL,
-    unidades_pedidas INT NOT NULL,
-    id_proveedor INT NOT NULL,
     nombre_del_producto VARCHAR (255) NOT NULL,
-    descontinuado BOOLEAN NOT NULL,
+    id_categoria INT NOT NULL,
+    id_proveedor INT NOT NULL,
+    stock INT NOT NULL,
+    precio_unitario FLOAT NOT NULL,
+    unidades_pedidas INT NOT NULL,
+    descontinuado VARCHAR(2) NOT NULL,
     PRIMARY KEY(id_producto),
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
     FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor)
 );
 CREATE TABLE facturas(
     id_factura INT NOT NULL AUTO_INCREMENT,
+    fecha DATE NOT NULL,
     id_empleado INT NOT NULL,
     id_cliente INT NOT NULL,
-    fecha DATE NOT NULL,
     PRIMARY KEY(id_factura),
     FOREIGN KEY(id_empleado) REFERENCES empleados(id_empleado),
     FOREIGN KEY(id_cliente) REFERENCES clientes(id_cliente)
