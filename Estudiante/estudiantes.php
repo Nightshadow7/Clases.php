@@ -1,7 +1,7 @@
 <?php
-require_once("config.php");
+require_once("Estudiante.php");
 
-$data = new Config();
+$data = new Estudiante();
 
 $all = $data -> obtainAll();
 ?>
@@ -38,6 +38,10 @@ $all = $data -> obtainAll();
         <a href="/Home/home.php" style="display: flex;gap:2px;">
           <i class="bi bi-house-door"> </i>
           <h3 style="margin: 0px;">Home</h3>
+        </a>
+        <a href="estudiantes.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Estudiantes</h3>
         </a>
         <a href="estudiantes.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
@@ -102,7 +106,7 @@ $all = $data -> obtainAll();
                     $but = "btn btn-outline-info";
                     break;
                   case 7:
-                    $but = "btn btn-outline-light";
+                    $but = "btn btn-outline-dark";
                     break;
                   default:
                     $but = "btn btn-outline-danger";
@@ -128,7 +132,7 @@ $all = $data -> obtainAll();
                     $bot = "btn btn-outline-info";
                     break;
                   case 7:
-                    $bot = "btn btn-outline-light";
+                    $bot = "btn btn-outline-dark";
                     break;
                   default:
                     $bot = "btn btn-outline-danger";
