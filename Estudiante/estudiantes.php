@@ -4,6 +4,7 @@ require_once("Estudiante.php");
 $data = new Estudiante();
 
 $all = $data -> obtainAll();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -147,8 +148,8 @@ $all = $data -> obtainAll();
                 <td><?php echo $val['review'];?></td>
                 <td><?php echo $val['ingles'];?></td>
                 <td><?php echo $val['ser'];?></td>
-                <td><?php echo $val['asistencia'];?></td>
                 <td><?php echo $val['skills'];?></td>
+                <td><?php echo $val['asistencia'];?></td>
                 <td><?php echo $val['especialidad'];?></td>
                 <td><a href="borrarEstudiantes.php?id=<?= $val['id'] ?>&req=delete" class="<?php echo $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
                 <td><a href="actualizarEstudiantes.php?id=<?= $val['id']?>" class="<?php echo $bot?>"><i class="bi bi-pencil"></i>Editar</a></td>

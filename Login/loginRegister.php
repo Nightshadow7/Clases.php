@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 
 $data = new Registro();
 $obtainAll = $data->obtainAll();
-print_r($obtainAll)
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +56,7 @@ print_r($obtainAll)
                         />
                     </div>
                  
-                    <button type="submit" class="btn btn-primary" value="loguearse.php" name=""></button>
+                    <input type="submit" class="btn btn-primary" value="loguearse" name="loguearse"></button>
                   </form>
                   
 

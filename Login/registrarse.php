@@ -13,18 +13,22 @@ if(isset($_POST["registrar"])){
     $registrar->setUsername($_POST["username"]);
     $registrar->setPassword($_POST["password"]);
 
-
-
-    $registrar->insertData();
-
-    print_r($registrar);
-    ?>
-
-
-    <script> 
-    // alert('Los datos fueron guardados exitosamente');
-    // document.location='loginRegister.php';
-    </script>
-    <?php 
+    if($registrar-> checkUser($_POST['email'])){
+        ?>
+        <script>
+            alert('El usuario ya existe por favor logueate');
+            document.location='loginRegister.php';
+        </script>
+        <?php 
+        }else{
+            $registrar->insertData();
+            ?>
+            <script> 
+                alert('Los datos fueron guardados exitosamente');
+                document.location='../Home/home.php';
+            </script>
+            <?php 
+        }
+    
 }
 ?>

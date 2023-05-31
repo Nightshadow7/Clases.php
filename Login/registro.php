@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 
 require_once('../config/conectar.php');
 require_once('../config/db.php');
+require_once('loguearse.php');
 
 class Registro extends Conectar{
 
@@ -61,16 +62,36 @@ class Registro extends Conectar{
     return $this->password;
   }
 
+  public function checkUser($email){
+    try {
+      $stm= $this-> dbCnx->prepare("SELECT * FROM  users WHERE email = '$email'");
+      $stm->execute();
+      if($stm -> fetchColumn()){
+        return true;
+      } else{
+        return false;
+      }
+
+    } catch (Exception $e) {
+      return $e->getMessage();
+    }
+  }
+
   public function insertData(){
     try {
-      $stm = $this->dbCnx -> prepare("INSERT INTO users (id_camper , email, username, password) values(?,?,?,?)");
-      $stm -> execute(array($this->id_camper , $this->email,$this->username, md5($this->password)));
-      // $stm = $this -> dbCnx -> prepare("INSERT INTO users(id,email,username,password) VALUES (:i,:ema,:users,:pas)");
-      // $stm-> bindParam(':i',$this->id);
-      // $stm-> bindParam(':ema',$this->email);
-      // $stm-> bindParam(':users',$this->username);
-      // $stm-> bindParam(':pas',$this->password);
-      // $stm-> execute();
+      
+      $stm = $this -> dbCnx -> prepare("INSERT INTO users(id_camper,email,username,password) VALUES (:i,:ema,:users,:pas)");
+      $stm-> bindParam(':i',$this->id_camper);
+      $stm-> bindParam(':ema',$this->email);
+      $stm-> bindParam(':users',$this->username);
+      $stm-> bindParam(':pas',$this->password);
+      $stm-> execute();
+
+      $loguearse = new Loguearse();
+      $loguearse -> setEmail($_POST['email']);
+      $loguarse -> setPassword($_POST['password']);
+      $success = $login -> login();
+      
     } catch (Exception $e) {
       return $e->getMessage();
     }
@@ -81,24 +102,38 @@ class Registro extends Conectar{
       $stm -> execute();
       return $stm -> fetchAll();  
     } catch (Exception $e) {
-      return $e->getMessages();
+      return $e->getMessage();
     }
   }
-  /*
-  public function delete(){
+  /* public function delete(){
     try {
-      $stm = $this-> dbCnx -> prepare("DELETE FROM users WHERE id =?");
-      $stm -> execute(array($this->id));
-      return $stm -> fetchAll();
-      ?>
-      <script> 
-      alert('Registro eliminado');
-      document.location='.php'
-      </script>";
-      <?php 
+    $stm = $this->dbCnx->prepare("DELETE FROM camper WHERE id=?" );
+        $stm->execute([$this->id]) ;
+        return $stm -> fetchAll();
+        echo"<script>alert('borrado exitosamente');document.location='estudiantes.php'</script>";
     } catch (Exception $e) {
-      return $e->getMessages();
+        return $e -> getMessage(); 
+    }
+  } */
+
+  /* public function selectOne(){
+    try {
+        $stm = $this->dbCnx->prepare("SELECT * FROM camper WHERE id=?");
+        $stm->execute([$this->id]);
+    return $stm -> fetchAll();
+    } catch (Exception $e) {
+        return $e -> getMessage();
+    }
+  }
+  
+  public function update(){
+    try {
+    $stm = $this->dbCnx->prepare("UPDATE campers SET nombres=?,direcion=?,logros=? WHERE id=?");
+    $stm->execute([$this->nombres, $this->direcion, $this->logros, $this->id]);
+    } catch (Exception $e) {
+        return $e -> getMessage(); 
     }
   } */
 }
+
 ?>

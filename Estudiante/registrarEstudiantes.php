@@ -10,6 +10,7 @@ if(isset($_POST["guardar"])){
     $config->setReview($_POST["review"]);
     $config->setSer($_POST["ser"]);
     $config->setIngles($_POST["ingles"]);
+    $config->setSkills($_POST["skills"]);
     $config->setAsistencia($_POST["asistencia"]);
     $config->setEspecialidad($_POST["especialidad"]);
 
