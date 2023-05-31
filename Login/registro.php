@@ -1,71 +1,83 @@
 <?php 
+ini_set("display_errors", 1);
+ini_set("display_startup_errors", 1);
+error_reporting(E_ALL);
+
 require_once('../config/conectar.php');
+require_once('../config/db.php');
 
 class Registro extends Conectar{
 
   private $id_user;
-  private $id;
+  private $id_camper ;
   private $email;
   private $username;
   private $password;
 
-  public function __construct($id_user = 0, $id = 0, $email = "", $username = "", $password = "", $dbCnx=""){
+  public function __construct($id_user = 0, $id_camper  = 0, $email = "", $username = "", $password = "", $dbCnx=""){
     $this->id_user = $id_user;
-    $this->id = $id;
+    $this->id_camper  = $id_camper ;
     $this->email = $email;
     $this->username = $username;
     $this->password = $password;
     parent:: __construct($dbCnx);
   }
   //getters
-  public function setId_user(){
-    return $this->id_user;
+  public function setId_user($id_user){
+    $this->id_user = $id_user;
+    
   }
-  public function setId(){
-    return $this->id;
+  public function setId_camper ($id_camper){
+    $this->id_camper = $id_camper ;
   }
-  public function setEmail(){
-    return $this->email;
+  public function setEmail($email){
+    $this->email = $email;
+    
   }
-  public function setUsername(){
-    return $this->username;
+  public function setUsername($username){
+    $this->username = $username;
+    
   }
-  public function setPassword(){
-    return $this->password;
+  public function setPassword($password){
+    $this->password = $password;
+    
   }
 
   //setters
-  public function getId_user($id_user){
-    $this->id_user = $id_user;
+  public function getId_user(){
+    return $this->id_user;
   }
-  public function getId($id){
-    $this->id = $id;
+  public function getId_camper(){
+    return $this->id_camper ;
+    
   }
-  public function getEmail($email){
-    $this->email = $email;
+  public function getEmail(){
+    return $this->email;
   }
-  public function getUsername($username){
-    $this->username = $username;
+  public function getUsername(){
+    return $this->username;
   }
-  public function getPassword($password){
-    $this->password = $password;
+  public function getPassword(){
+    return $this->password;
   }
 
   public function insertData(){
     try {
-      $stm = $this -> dbCnx -> prepare("INSERT INTO users(id,email,username,password) VALUES (:i,:ema,:users,:pas)");
-      $stm-> bindParam(':i',$this->id);
-      $stm-> bindParam(':ema',$this->email);
-      $stm-> bindParam(':users',$this->username);
-      $stm-> bindParam(':pas',$this->password);
-      $stm-> execute();
+      $stm = $this->dbCnx -> prepare("INSERT INTO users (id_camper , email, username, password) values(?,?,?,?)");
+      $stm -> execute(array($this->id_camper , $this->email,$this->username, md5($this->password)));
+      // $stm = $this -> dbCnx -> prepare("INSERT INTO users(id,email,username,password) VALUES (:i,:ema,:users,:pas)");
+      // $stm-> bindParam(':i',$this->id);
+      // $stm-> bindParam(':ema',$this->email);
+      // $stm-> bindParam(':users',$this->username);
+      // $stm-> bindParam(':pas',$this->password);
+      // $stm-> execute();
     } catch (Exception $e) {
       return $e->getMessage();
     }
   }
   public function obtainAll(){
     try {
-      $stm = $this-> dbCnx -> prepare("SELECT * FROM camper");
+      $stm = $this-> dbCnx -> prepare("SELECT id,nombres FROM camper");
       $stm -> execute();
       return $stm -> fetchAll();  
     } catch (Exception $e) {

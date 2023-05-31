@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 
 $data = new Registro();
 $obtainAll = $data->obtainAll();
+print_r($obtainAll)
 ?>
 
 <!DOCTYPE html>
@@ -76,23 +77,12 @@ $obtainAll = $data->obtainAll();
                 
              <div  class="d-flex justify-content-center align-items-center" >
                 
-                <form action="registrarse.php" method="post">
+              <form action="registrarse.php" method="POST">
                     <h1 class="m-5" style="font-weight: 800;">REGISTRAR</h1>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input 
-                          type="text"
-                          id="email"
-                          placeholder="Ingrese su correo par registrarse"
-                          name="email"
-                          class="form-control"
-                          required
-                        />
-                    </div>
 
                     <div class="mb-3">
-                              <label for="camper" class="form-label">campers</label>
-                              <select name="id" id="camper" class="form-select mb-1">
+                              <label for="id_camper" class="form-label">campers</label>
+                              <select name="id_camper" id="id_camper" class="form-select mb-1">
                               <?php
                                 foreach ($obtainAll as $key => $val): 
                                 ?> 
@@ -103,6 +93,18 @@ $obtainAll = $data->obtainAll();
                               </select>
                             </div>
 
+                            <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input 
+                          type="text"
+                          id="email"
+                          placeholder="Ingrese su correo par registrarse"
+                          name="email"
+                          class="form-control"
+                          required
+                        />
+                    </div>
+                    
                     <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                         <input 
@@ -129,8 +131,8 @@ $obtainAll = $data->obtainAll();
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
-                    <button type="submit" class="btn btn-primary" value="registro.php" name="registrar">registrar</button>
-                  </form>
+                    <input type="submit" class="btn btn-primary" value="registrar" name="registrar"/>
+              </form>
 
             </div>
             <div class="d-flex justify-content-center align-items-end m-5"><img src="img/Diseño sin título (1).png" alt="" style="width: 50%; height: 10%; object-fit: cover;" ></div>
