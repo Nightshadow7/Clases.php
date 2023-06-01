@@ -4,7 +4,7 @@ ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 error_reporting(E_ALL);
 
-require_once("configuracion.php");
+require_once("./funciones/configuracion.php");
 $data = new Clientes();/* creamos nueva clase de config */
 $allData = $data->selectAll();
 ?>
@@ -15,7 +15,7 @@ $allData = $data->selectAll();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with Rubic landing page.">
     <meta name="author" content="Devcrud">
-    <title>Supermarket</title>
+    <title>Clientes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- font icons -->
@@ -37,23 +37,23 @@ $allData = $data->selectAll();
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../categorias/categorias.php">Categorias</a>
+                <li class="nav-item">
+                        <a class="nav-link" href="./categorias.php">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../clientes/clientes.php">Clientes</a>
+                        <a class="nav-link" href="./clientes.php">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../empleados/empleados.php">Empleados</a>
+                        <a class="nav-link" href="./empleados.php">Empleados</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./proveedores.php">Proveedores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../productos/productos.php">Productos</a>
+                        <a class="nav-link" href="./productos.php">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-dark shadow-none ml-md-4" href="../facturacion/facturacion.php"><i class="bi bi-receipt"> </i> Facturacion</a>
+                        <a class="nav-link btn btn-primary text-dark shadow-none ml-md-4" href="./facturacion.php"><i class="bi bi-receipt"> </i> Facturacion</a>
                     </li>
                 </ul>
             </div>
@@ -206,7 +206,7 @@ $allData = $data->selectAll();
                         <td> <?= $val['nom_cliente']; ?></td>
                         <td> <?= $val['celular_clien']; ?></td>
                         <td> <?= $val['compañia']; ?></td>
-                        <td><a href="borrar.php?id=<?= $val['id_cliente'] ?>&req=deleteCli" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
+                        <td><a href="./funciones/borar.php?id=<?= $val['id_cliente'] ?>&req=deleteclientes" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
                       </tr>
                       <?php } ?>
                     </tbody>

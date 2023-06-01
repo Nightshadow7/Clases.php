@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS proveedores;
 DROP TABLE IF EXISTS productos;
 DROP TABLE IF EXISTS facturas;
 DROP TABLE IF EXISTS facturasDetalle;
+
 CREATE TABLE categorias(
     id_categoria INT NOT NULL AUTO_INCREMENT,
     nombre_cat VARCHAR(255) NOT NULL,
@@ -13,6 +14,7 @@ CREATE TABLE categorias(
     imagen VARCHAR (255) NOT NULL,
     PRIMARY KEY(id_categoria)
 );
+
 CREATE TABLE clientes(
     id_cliente INT NOT NULL AUTO_INCREMENT,
     nom_cliente VARCHAR (255) NOT NULL,
@@ -20,6 +22,7 @@ CREATE TABLE clientes(
     compañia VARCHAR (255) NOT NULL,
     PRIMARY KEY(id_cliente)
 );
+
 CREATE TABLE empleados(
     id_empleado INT NOT NULL AUTO_INCREMENT,
     nombre_emp VARCHAR (255) NOT NULL,
@@ -28,6 +31,7 @@ CREATE TABLE empleados(
     imagen_emp VARCHAR (255) NOT NULL,
     PRIMARY KEY(id_empleado)
 );
+
 CREATE TABLE proveedores(
     id_proveedor INT NOT NULL AUTO_INCREMENT,
     nombre_proveedor VARCHAR (255) NOT NULL,
@@ -35,6 +39,7 @@ CREATE TABLE proveedores(
     ciudad_proveedor VARCHAR (255) NOT NULL,
     PRIMARY KEY(id_proveedor)
 );
+
 CREATE TABLE productos(
     id_producto INT NOT NULL AUTO_INCREMENT,
     nombre_del_producto VARCHAR (255) NOT NULL,
@@ -48,6 +53,7 @@ CREATE TABLE productos(
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
     FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor)
 );
+
 CREATE TABLE facturas(
     id_factura INT NOT NULL AUTO_INCREMENT,
     fecha DATE NOT NULL,
@@ -57,6 +63,7 @@ CREATE TABLE facturas(
     FOREIGN KEY(id_empleado) REFERENCES empleados(id_empleado),
     FOREIGN KEY(id_cliente) REFERENCES clientes(id_cliente)
 );
+
 CREATE TABLE facturasDetalle(
     id_factura INT NOT NULL,
     id_producto INT NOT NULL,
