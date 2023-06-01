@@ -1,5 +1,6 @@
 <?php
 // se hace la conexion para un solo archivo pdo
+require_once("db.php");
 class Conectar{
     protected $dbCnx;
     public function __construct(){

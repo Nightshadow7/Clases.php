@@ -1,13 +1,15 @@
-<<?php 
+<?php 
 // usado para encontrar errores
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 error_reporting(E_ALL);
 
-require_once("./funciones/configuracion.php");
+require_once("./configuracion.php");
 
 $data = new Categorias();/* creamos nueva clase de config */
 $allData = $data->selectAll();
+
+print_r($allData);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,9 +22,9 @@ $allData = $data->selectAll();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- font icons -->
-    <link rel="stylesheet" href="../assets/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + Rubic main styles -->
-	  <link rel="stylesheet" href="../assets/css/rubic.css">
+	  <link rel="stylesheet" href="assets/css/rubic.css">
     <!-- icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="pro.css">
@@ -31,7 +33,7 @@ $allData = $data->selectAll();
 
     <nav id="scrollspy" class="navbar page-navbar navbar-dark navbar-expand-md fixed-top" data-spy="affix" data-offset-top="20">
         <div class="container">
-            <a class="navbar-brand" href="../index.php"><strong class="text-primary">SUPER</strong><span class="text-light">MARKET</span></a>
+            <a class="navbar-brand" href="index.php"><strong class="text-primary">SUPER</strong><span class="text-light">MARKET</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -66,7 +68,7 @@ $allData = $data->selectAll();
                 <div class="col-md-8 pt-5 mt-5 text-center">
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-primary m-4" data-bs-toggle="modal" data-bs-target="#registrarProducto">
-                    Registrar Nuevo Empleado
+                    Registrar Nueva Categoria
                   </button>
 
                   <!-- Modal -->
@@ -78,7 +80,7 @@ $allData = $data->selectAll();
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                          <form class="col d-flex flex-wrap" action="registrarProductos.php" method="post">
+                          <form class="col d-flex flex-wrap" action="funciones/registros.php" method="post">
                             <div class="mb-1 col-12">
                               <label for="nombre" class="form-label">Nombre de la Categoria</label>
                               <input 
@@ -109,7 +111,7 @@ $allData = $data->selectAll();
                                 type="text"
                                 placeholder="Ingrese el url de la imagen"
                                 id="imagen"
-                                name="url"
+                                name="imagen"
                                 class="form-control"
                                 required
                               />
@@ -128,11 +130,11 @@ $allData = $data->selectAll();
                   <table class="table table-custom ">
                     <thead>
                       <tr>
-                        <th class="barra" scope="col">#</th>
-                        <th class="barra" scope="col">NOMBRE</th>
-                        <th class="barra" scope="col">DESCRIPCION</th>
-                        <th class="barra" scope="col">IMAGEN</th>
-                        <th class="barra" scope="col">BORRAR</th>
+                        <th class="barra .text-light" scope="col">#</th>
+                        <th class="barra .text-light" scope="col">NOMBRE</th>
+                        <th class="barra .text-light" scope="col">DESCRIPCION</th>
+                        <th class="barra .text-light" scope="col">IMAGEN</th>
+                        <th class="barra .text-light" scope="col">BORRAR</th>
 
                         <!-- <th class="barra" scope="col">EDITAR</th> -->
                       </tr>

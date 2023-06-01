@@ -4,7 +4,7 @@ ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 error_reporting(E_ALL);
 
-require_once("configuracion.php");
+require_once("../configuracion.php");
 
 if(isset($_POST["guardar"])):
     $nano=$_POST['guardar'];
@@ -15,10 +15,11 @@ if(isset($_POST["guardar"])):
       $guardar->setDescripcion($_POST['descripcion']);
       $guardar->setImagen($_POST['imagen']);
       $guardar->insertData();
+      print_r($guardar)
       ?>
       <script>
         alert("Los datos fueron enviados correctamente");
-        document.location='categorias.php';
+        document.location='../categorias.php';
       </script>
       <?php
     elseif ($nano === "clientes"):
