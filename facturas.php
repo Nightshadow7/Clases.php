@@ -127,6 +127,7 @@ $allProductos = $productos->selectAll();
                               </select>
                             </div>
 
+                            <!-- se trabaja con el detalle de factura como otro modal -->
                             <div class="mb-1 col-12">
                               <label for="producto" class="form-label">Producto</label>
                               <select name="producto" id="producto" class="form-select mb-1">
@@ -139,7 +140,7 @@ $allProductos = $productos->selectAll();
                               ?> 
                               </select>
                             </div>
-
+                            
                             <div class="mb-1 col-12">
                               <label for="cantidad" class="form-label">Cantidad</label>
                               <input 
@@ -153,12 +154,12 @@ $allProductos = $productos->selectAll();
                             </div>
 
                             <div class="mb-1 col-12">
-                              <label for="precio_unitario" class="form-label">Precio Total, alias descuento after</label>
+                              <label for="descuento" class="form-label">Precio Total, alias Descuento after</label>
                               <input 
                                 type="number"
                                 placeholder="Dijite El precio total del producto"
-                                id="precio_unitario"
-                                name="precio_unitario"
+                                id="descuento"
+                                name="descuento"
                                 class="form-control" 
                                 required
                               />
@@ -183,13 +184,10 @@ $allProductos = $productos->selectAll();
                         <th class="barra" scope="col">FECHA DE EXPEDICION</th>
                         <th class="barra" scope="col">EMPLEADO</th>
                         <th class="barra" scope="col">CLIENTE</th>
-                        <th class="barra" scope="col">PRODUCTO</th>
-                        <th class="barra" scope="col">CANTIDAD</th>
-                        <th class="barra" scope="col">TOTAL</th>
-                        <th class="barra" scope="col">DETALLES</th>
-                        <th class="barra" scope="col">BORRAR</th>
-
+                        <th class="barra" scope="col">DETALLE</th>
+                        <th class="barra" scope="col">BORAR</th>
                         <!-- <th class="barra" scope="col">EDITAR</th> -->
+
                       </tr>
                     </thead>
                     <tbody class="" id="tabla">
@@ -258,18 +256,19 @@ $allProductos = $productos->selectAll();
                           endswitch;
                           $nameemp = $data->nameEmp($val['id_empleado']);
                           $namecli = $data->nameCli($val['id_cliente']);
-                          $namepro = $data->namePro($val['id_producto']);
                       ?>
                       <tr>
                         <td> <?= $val['id_factura']; ?></td>
                         <td> <?= $val['fecha']; ?></td>
                         <td> <?= $nameemp; ?></td>
                         <td> <?= $namecli; ?></td>
-                        <td> <?= $namepro; ?></td>
                         <td> <?= $val['cantidad']; ?></td>
                         <td> <?= $val['unidades_pedidas']; ?></td>
                         <td> <?= $val['descontinuado']; ?></td>
-                        <td><a href="borrar.php?id=<?= $val['id_factura'] ?>&req=delete" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal<?= $val['factura_ID']?>">detalle</button></td>
+              
+                        <td><button type="button" data-bs-toggle="modal" data-bs-target="#modal<?= $val['id_factura'] ?>" class="<?= $but ?>"><i class="bi bi-trash3"></i>Detalles</button></td>
+                        <td><a href="borrar.php?id=<?= $val['id_factura'] ?>&req=deletefactura" class="<?= $bot ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
                       </tr>
                       <?php } ?>
                     </tbody>
@@ -277,6 +276,38 @@ $allProductos = $productos->selectAll();
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="modal<?= $val['id_factura']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <table class="table table-custom">
+                      <thead>
+                      <tr>
+                          <th scope="col">Producto</th>
+                          <th scope="col">Cantidad Ventas</th>
+                          <th scope="col">Total</th>
+                        </tr>
+                      </thead>
+                        <tbody>
+                        <tr>
+                          <td><?= $val['producto']?></td>
+                          <td><?= $val['cantidad']?></td>
+                          <td><?= $val['descuento']?></td>
+                        </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
     </header>
     
     <script src="../assets/vendors/jquery/jquery-3.4.1.js"></script>
