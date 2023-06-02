@@ -19,7 +19,7 @@ if(isset($_POST["guardar"])):
       ?>
       <script>
         alert("Los datos fueron enviados correctamente");
-        document.location='categorias.php';
+        document.location='../categorias.php';
       </script>
       <?php
     elseif ($nano === "clientes"):
@@ -31,7 +31,7 @@ if(isset($_POST["guardar"])):
       ?>
       <script>
         alert("Los datos fueron enviados correctamente");
-        document.location='clientes.php';
+        document.location='../clientes.php';
       </script>
       <?php
     elseif ($nano === "empleados"):
@@ -44,7 +44,7 @@ if(isset($_POST["guardar"])):
       ?>
       <script>
         alert("Los datos fueron enviados correctamente");
-        document.location='empleados.php';
+        document.location='../empleados.php';
       </script>
       <?php
     elseif ($nano === "proveedores"):
@@ -56,7 +56,7 @@ if(isset($_POST["guardar"])):
       ?>
       <script>
         alert("Los datos fueron enviados correctamente");
-        document.location='proveedores.php';
+        document.location='../proveedores.php';
       </script>
       <?php
     elseif ($nano === "productos"):
@@ -72,7 +72,7 @@ if(isset($_POST["guardar"])):
       ?>
       <script>
         alert("Los datos fueron enviados correctamente");
-        document.location='productos.php'
+        document.location='../productos.php'
       </script>
       <?php
     endif;

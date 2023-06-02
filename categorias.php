@@ -9,6 +9,7 @@ require_once("./configuracion.php");
 $data = new Categorias();/* creamos nueva clase de config */
 $allData = $data->selectAll();
 
+print_r($allData);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,22 +41,22 @@ $allData = $data->selectAll();
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="categorias.php">Categorias</a>
+                        <a class="nav-link" href="./categorias.php">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="clientes.php">Clientes</a>
+                        <a class="nav-link" href="./clientes.php">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="empleados.php">Empleados</a>
+                        <a class="nav-link" href="./empleados.php">Empleados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="proveedores.php">Proveedores</a>
+                        <a class="nav-link" href="./proveedores.php">Proveedores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="productos.php">Productos</a>
+                        <a class="nav-link" href="./productos.php">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-dark shadow-none ml-md-4" href="facturacion.php"><i class="bi bi-receipt"> </i> Facturacion</a>
+                        <a class="nav-link btn btn-primary text-dark shadow-none ml-md-4" href="./facturacion.php"><i class="bi bi-receipt"> </i> Facturacion</a>
                     </li>
                 </ul>
             </div>
