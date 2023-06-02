@@ -1,4 +1,5 @@
 CREATE DATABASE supermercado;
+USE supermercado;
 DROP TABLE IF EXISTS categorias;
 DROP TABLE IF EXISTS clientes;
 DROP TABLE IF EXISTS empleados;

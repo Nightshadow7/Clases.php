@@ -88,13 +88,13 @@ class Empleados extends Conectar{
     private $direccion_emp;
     private $imagen_emp;
   
-    public function __construct($id_emp = 0, $nombre_emp = "", $celular_emp = "", $direccion_emp ="",$imagen_emp ="" , $dbCnx = ""){
+    public function __construct($id_empleado = 0, $nombre_emp = "", $celular_emp = "", $direccion_emp ="",$imagen_emp ="" , $dbCnx = ""){
         $this->id_empleado=$id_empleado; 
         $this->nombre_emp=$nombre_emp; 
         $this->celular_emp=$celular_emp; 
         $this->direccion_emp=$direccion_emp; 
         $this->imagen_emp=$imagen_emp; 
-        parent::__contruct($dbCnx);
+        parent::__construct($dbCnx);
     }
     #getters
     public function getId_empleado(){
@@ -181,7 +181,7 @@ class Clientes extends Conectar{
         $this->nom_cliente=$nom_cliente;
         $this->celular_clien=$celular_clien;
         $this->compañia=$compañia;
-        parent::__contruct($dbCnx);
+        parent::__construct($dbCnx);
     }
     // getters
     public function getId_cliente(){
@@ -254,7 +254,7 @@ class Proveedores extends Conectar{
       $this->nombre_proveedor= $nombre_proveedor;
       $this->telefono_proveedor= $telefono_proveedor;
       $this->ciudad_proveedor = $ciudad_proveedor;
-      parent::__contruct($dbCnx);
+      parent::__construct($dbCnx);
   }
     // getters
     public function getId_proveedor(){

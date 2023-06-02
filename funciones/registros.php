@@ -19,7 +19,7 @@ if(isset($_POST["guardar"])):
       ?>
       <script>
         alert("Los datos fueron enviados correctamente");
-        document.location='../categorias.php';
+        document.location='categorias.php';
       </script>
       <?php
     elseif ($nano === "clientes"):
