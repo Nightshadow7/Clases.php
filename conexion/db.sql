@@ -44,8 +44,8 @@ CREATE TABLE proveedores(
 CREATE TABLE productos(
     id_producto INT NOT NULL AUTO_INCREMENT,
     nombre_del_producto VARCHAR (255) NOT NULL,
-    id_categoria INT NOT NULL,
-    id_proveedor INT NOT NULL,
+    categoria INT NOT NULL,
+    proveedor INT NOT NULL,
     stock INT NOT NULL,
     precio_unitario FLOAT NOT NULL,
     unidades_pedidas INT NOT NULL,

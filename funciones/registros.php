@@ -39,7 +39,7 @@ if(isset($_POST["guardar"])):
       $guardar->setNombre_emp($_POST['nombre_emp']);
       $guardar->setCelular_emp($_POST['celular_emp']);
       $guardar->setDireccion_emp($_POST['direccion_emp']);
-      $guardar->setImagen_emp($_POST['imagen_imp']);
+      $guardar->setImagen_emp($_POST['imagen_emp']);
       $guardar->insertData();
       ?>
       <script>
@@ -50,8 +50,8 @@ if(isset($_POST["guardar"])):
     elseif ($nano === "proveedores"):
       $guardar = new Proveedores();
       $guardar->setNombre_proveedor($_POST['nombre_proveedor']);
-      $guardar->setCelular_prov($_POST['telefono_proveedor']);
-      $guardar->setCiudad_prov($_POST['ciudad_proveedor']);
+      $guardar->setTelefono_proveedor($_POST['telefono_proveedor']);
+      $guardar->setCiudad_proveedor($_POST['ciudad_proveedor']);
       $guardar->insertData();
       ?>
       <script>
@@ -68,10 +68,11 @@ if(isset($_POST["guardar"])):
       $guardar->setPrecio_unitario($_POST['precio_unitario']);
       $guardar->setUnidades_pedidas($_POST['unidades_pedidas']);
       $guardar->setDescontinuado($_POST['descontinuado']);
+      print_r($guardar);
       $guardar->insertData();
       ?>
       <script>
-        alert("Los datos fueron enviados correctamente");
+        /**alert("Los datos fueron enviados correctamente");
         document.location='../productos.php'
       </script>
       <?php

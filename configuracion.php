@@ -329,7 +329,7 @@ class Productos extends Conectar{
   private $descontinuado;
 
   #constructor
-  public function __construct($id_producto = 0 , $nombre_del_producto = "" , $categoria = 0 , $proveedor = 0 , $stock = 0 , $precio_unitario = 0 , $unidades_pedidas = 0 , $descontinuado = "" ){
+  public function __construct($id_producto = 0 , $nombre_del_producto = "" , $categoria = 0 , $proveedor = 0 , $stock = 0 , $precio_unitario = 0 , $unidades_pedidas = 0 , $descontinuado = "" , $dbCnx = ""){
       $this->id_producto=$id_producto;
       $this->nombre_del_producto=$nombre_del_producto;
       $this->categoria=$categoria;
@@ -338,6 +338,7 @@ class Productos extends Conectar{
       $this->precio_unitario=$precio_unitario;
       $this->unidades_pedidas=$unidades_pedidas;
       $this->descontinuado=$descontinuado;
+      parent::__construct($dbCnx);
   }
 
   #getter for variables

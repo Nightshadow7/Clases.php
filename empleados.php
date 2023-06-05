@@ -8,6 +8,7 @@ require_once("./configuracion.php");
 
 $data = new Empleados();/* creamos nueva clase de config */
 $allData = $data->selectAll();
+
 print_r($allData);
 ?>
 <!DOCTYPE html>
