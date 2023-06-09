@@ -75,7 +75,7 @@ class Constructora extends Conectar{
     public function delete(){
       try {
         $stm = $this->dbCnx->prepare("DELETE FROM Constructora WHERE id_constructora = ?");
-        $stm->execute(array($this->id));
+        $stm->execute(array($this->id_constructora));
         return $stm -> fetchAll();
       } catch (Exception $e) {
           return $e -> getMessage();
@@ -83,67 +83,37 @@ class Constructora extends Conectar{
     }
 }
 
-class Empleados extends Conectar{
-    private $id_empleado;
-    private $nombre_emp;
-    private $celular_emp;
-    private $direccion_emp;
-    private $imagen_emp;
+class Cargo extends Conectar{
+    private $id_cargo;
+    private $nombre;
   
-    public function __construct($id_empleado = 0, $nombre_emp = "", $celular_emp = "", $direccion_emp ="",$imagen_emp ="" , $dbCnx = ""){
-        $this->id_empleado=$id_empleado; 
-        $this->nombre_emp=$nombre_emp; 
-        $this->celular_emp=$celular_emp; 
-        $this->direccion_emp=$direccion_emp; 
-        $this->imagen_emp=$imagen_emp; 
+    public function __construct($id_cargo = 0, $nombre = "" , $dbCnx = ""){
+        $this->id_cargo=$id_cargo; 
+        $this->nombre=$nombre;  
         parent::__construct($dbCnx);
     }
     #getters
-    public function getId_empleado(){
-        return $this->id_empleado;
+    public function getId_cargo(){
+        return $this->id_cargo;
     }
-    public function getNombre_emp(){
-        return $this->nombre_emp;
-    }
-    public function getCelular_emp(){
-        return $this->celular_emp;
-    }
-    public function getDireccion_emp(){
-        return $this->direccion_emp;
-    }
-    public function getImagen_emp(){
-        return $this->imagen_emp;
+    public function getNombre(){
+        return $this->nombre;
     }
 
     #setters
-    public function setId_empleado($id_empleado){
-        $this->id_empleado=$id_empleado;
+    public function setId_cargo($id_cargo){
+        $this->id_cargo=$id_cargo;
     }
    
-    public function setNombre_emp($nombre_emp){
-        $this->nombre_emp=$nombre_emp;
-    }
-    
-    public function setCelular_emp($celular_emp){
-        $this->celular_emp=$celular_emp;
-    }
-   
-    public function setDireccion_emp($direccion_emp){
-        $this->direccion_emp=$direccion_emp;
-    }
-  
-    public function setImagen_emp($imagen_emp){
-        $this->imagen_emp=$imagen_emp;
+    public function setNombre($nombre){
+        $this->nombre=$nombre;
     }
 
     #metodos
     public function insertData(){
         try {
-            $stm = $this->dbCnx->prepare("INSERT INTO empleados(nombre_emp,celular_emp,direccion_emp,imagen_emp) VALUES(:nomemp,:celemp,:diremp,:imgemp)");
-            $stm->bindParam(":nomemp",$this->nombre_emp);
-            $stm->bindParam(":celemp",$this->celular_emp);
-            $stm->bindParam(":diremp",$this->direccion_emp);
-            $stm->bindParam(":imgemp",$this->imagen_emp);
+            $stm = $this->dbCnx->prepare("INSERT INTO Cargo(nombre) VALUES(:nom)");
+            $stm->bindParam(":nom",$this->nombre);
             $stm->execute();
         } catch (Exception $e) {
             $e->getMessage();
@@ -151,7 +121,7 @@ class Empleados extends Conectar{
     }
     public function selectAll() {
         try {
-            $stm=$this->dbCnx->prepare("SELECT * FROM empleados");
+            $stm=$this->dbCnx->prepare("SELECT * FROM Cargo");
             $stm->execute();
             return $stm->fetchAll();
         } catch (Exception $e) {
@@ -160,8 +130,8 @@ class Empleados extends Conectar{
     }
     public function delete(){
         try {
-          $stm = $this->dbCnx->prepare("DELETE FROM empleados WHERE id_empleado=?");
-          $stm->execute(array($this->id));
+          $stm = $this->dbCnx->prepare("DELETE FROM Cargo WHERE id_cargo=?");
+          $stm->execute(array($this->id_cargo));
           return $stm -> fetchAll();
             //   para saber como esta la pagina ahora
         } catch (Exception $e) {
@@ -171,32 +141,47 @@ class Empleados extends Conectar{
   
 }
 
-class Clientes extends Conectar{
+class Empleados extends Conectar{
     // variables
-    private$id_cliente;
-    private$nom_cliente;
-    private$celular_clien;
-    private$compañia;
+    private $id_empleado;
+    private $constructora;
+    private $nombre;
+    private $apellido;
+    private $cargo;
+    private $usuario;
+    private $password;
     // constructor
-    public function __construct($id_cliente = 0 , $nom_cliente = "", $celular_clien = 0,$compañia="", $dbCnx = "" ){
-        $this->id_cliente=$id_cliente;
-        $this->nom_cliente=$nom_cliente;
-        $this->celular_clien=$celular_clien;
-        $this->compañia=$compañia;
+    public function __construct($id_empleado = 0 , $constructora = "" , $nombre = "" ,$apellido = "", $cargo = "" , $usuario = "" , $password = "", $dbCnx = "" ){
+        $this -> id_empleado=$id_empleado;
+        $this -> constructora=$constructora;
+        $this -> nombre=$nombre;
+        $this -> apellido=$apellido;
+        $this -> cargo=$cargo;
+        $this -> usuario=$usuario;
+        $this -> password=$password;
         parent::__construct($dbCnx);
     }
     // getters
-    public function getId_cliente(){
-        $this->id_cliente;
+    public function getId_empleado(){
+        $this->id_empleado;
     }
-    public function getNom_cliente(){
-        $this->nom_cliente;
+    public function getConstructora(){
+        $this->constructora;
     }
-    public function getCelular_clien(){
-        $this->celular_clien;
+    public function getNombre(){
+        $this->nombre;
     }
-    public function getCompañia(){
-        $this->Compañia;
+    public function getApellido(){
+        $this->apellido;
+    }
+    public function getCargo(){
+        $this->cargo;
+    }
+    public function getUsuario(){
+        $this->usuario;
+    }
+    public function getPassword(){
+        $this->password;
     }
     // setters
     public function setId_cliente($id_cliente){

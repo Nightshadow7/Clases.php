@@ -37,7 +37,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
             <span>
-              Heustonn
+             Constructora
             </span>
           </a>
           <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
@@ -93,15 +93,14 @@
                     <div class="detail-box">
                       <div>
                         <h1>
-                          Heustonn <br>
-                          Maintenance <br>
+                          Alquiler <br>
+                          De construccion <br>
                           <span>
                             Service
                           </span>
                         </h1>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                          sed do eiusmod tempor incididunt ut labore
+                        "Construyendo sueños, edificando confianza. Nuestra empresa de alquiler de maquinaria y equipos para la construcción está comprometida con la excelencia y la satisfacción del cliente. ¡Transformamos proyectos en realidad, un ladrillo a la vez!"
                         </p>
                       </div>
                     </div>
@@ -125,15 +124,14 @@
                     <div class="detail-box">
                       <div>
                         <h1>
-                          Heustonn <br>
-                          Maintenance <br>
+                        Alquiler <br>
+                          De construccion <br>
                           <span>
                             Service
                           </span>
                         </h1>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                          sed do eiusmod tempor incididunt ut labore
+                        "Nuestros materiales de construcción son la base sólida para tus grandes proyectos. Calidad superior y durabilidad excepcional, construyendo juntos un futuro resistente y próspero."
                         </p>
                       </div>
                     </div>
@@ -157,15 +155,14 @@
                     <div class="detail-box">
                       <div>
                         <h1>
-                          Heustonn <br>
-                          Maintenance <br>
+                        Alquiler <br>
+                          De construccion <br>
                           <span>
                             Service
                           </span>
                         </h1>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                          sed do eiusmod tempor incididunt ut labore
+                        "En nuestra bodega de materiales encontrarás todo lo que necesitas para construir tus sueños. Amplio stock, variedad y servicio confiable, haciendo de cada visita una experiencia satisfactoria."
                         </p>
                       </div>
                     </div>

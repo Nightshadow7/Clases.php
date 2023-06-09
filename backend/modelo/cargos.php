@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 require_once("../controlers/konfij.php");
 
-$data = new Constructora();/* creamos nueva clase de config */
+$data = new Cargo();/* creamos nueva clase de config */
 $allData = $data->selectAll();
 
 ?>
@@ -93,13 +93,13 @@ $allData = $data->selectAll();
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="v2">
                       <li><a class="dropdown-item" href="marcas.php">Marcas</a></li>
-                      <li><a class="dropdown-item" href="categorias.php">Categorias</a></li>
+                      <li><a class="dropdown-item" href="categoria.php">Categoria</a></li>
                       <li><a class="dropdown-item" href="productos.php">Productos</a></li>
                     </ul>
                   </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link " href=""><i class="bi bi-receipt"> </i> Cotizacion</a>
+                  <a class="nav-link " href="cotizacion.php"><i class="bi bi-receipt"> </i> Cotizacion</a>
                 </li>
               </ul>
             </div>
@@ -117,7 +117,7 @@ $allData = $data->selectAll();
                 <div class="col-md-8 pt-5 mt-5 text-center">
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-outline-danger m-4 float-end" data-bs-toggle="modal" data-bs-target="#registrarProducto">
-                    Registrar nueva Constructora
+                    Registrar nuevo cargo
                   </button>
 
                   <!-- Modal -->
@@ -125,49 +125,25 @@ $allData = $data->selectAll();
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title mt-5 bg-success" id="exampleModalLabel">Nueva Constructora</h5>
+                          <h5 class="modal-title mt-5 bg-success" id="exampleModalLabel">Nuevo Cargo</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                           <form class="col d-flex flex-wrap" action="../controlers/rejitro.php" method="post">
                             <div class="mb-1 col-12">
-                              <label for="nombre" class="form-label">Nombre de la Constructora</label>
+                              <label for="nombre" class="form-label">Nombre del cargo</label>
                               <input 
                                 type="text"
-                                placeholder="Ingrese el nombre de la constructora"
+                                placeholder="Ingrese el nombre del cargo"
                                 id="nombre"
                                 name="nombre"
                                 class="form-control"
                                 required
                               />
                             </div>
-
-                            <div class="mb-1 col-12">
-                              <label for="descripcion" class="form-label">Direccion</label>
-                              <input 
-                                type="text"
-                                placeholder="Ingrese su direccion"
-                                id="descripcion"
-                                name="direccion"
-                                class="form-control"
-                                required
-                              />
-                            </div>
-
-                            <div class="mb-1 col-12">
-                              <label for="telefono" class="form-label">Telefono</label>
-                              <input 
-                                type="number"
-                                placeholder="Ingrese el telefono de la empresa"
-                                id="telefono"
-                                name="telefono"
-                                class="form-control"
-                                required
-                              />
-                            </div>
                             
                             <div class=" col-12 m-2">
-                              <button type="submit" class="btn btn-primary" value="constructora" name="guardar">Agregar Constructora</button>
+                              <button type="submit" class="btn btn-primary" value="cargos" name="guardar">Agregar Cargo</button>
                             </div>
 
                           </form>  
@@ -180,9 +156,7 @@ $allData = $data->selectAll();
                     <thead>
                       <tr>
                         <th class="barra .text-light" scope="col">#</th>
-                        <th class="barra .text-light" scope="col">NOMBRE</th>
-                        <th class="barra .text-light" scope="col">DIRECCION</th>
-                        <th class="barra .text-light" scope="col">TELEFONO</th>
+                        <th class="barra .text-light" scope="col">NOMBRE DEL CARGO</th>
                         <th class="barra .text-light" scope="col">BORRAR</th>
 
                         <!-- <th class="barra" scope="col">EDITAR</th> -->
@@ -254,11 +228,9 @@ $allData = $data->selectAll();
                           endswitch;
                       ?>
                       <tr>
-                        <td> <?= $val['id_constructora']; ?></td>
+                        <td> <?= $val['id_cargo']; ?></td>
                         <td> <?= $val['nombre']; ?></td>
-                        <td> <?= $val['direccion']; ?></td>
-                        <td> <?= $val['telefono']; ?></td>
-                        <td><a href="../controlers/borar.php?id=<?= $val['id_constructora'] ?>&req=deleteconstructora" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
+                        <td><a href="../controlers/borar.php?id=<?= $val['id_cargo'] ?>&req=deletecargo" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
                       </tr>
                       <?php } ?>
                     </tbody>

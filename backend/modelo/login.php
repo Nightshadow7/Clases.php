@@ -64,8 +64,8 @@
                       <a class=" " href=""> Empleados </a>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="v1">
-                      <li><a class="dropdown-item" href="#">Cargos</a></li>
-                      <li><a class="dropdown-item" href="#">Empleados</a></li>
+                      <li><a class="dropdown-item" href="cargos.php">Cargos</a></li>
+                      <li><a class="dropdown-item" href="empleados.php">Empleados</a></li>
                     </ul>
                   </div>
                 </li>
@@ -79,9 +79,9 @@
                     <a class="" href="#">Login</a>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="v2">
-                      <li><a class="dropdown-item" href="#">Marcas</a></li>
-                      <li><a class="dropdown-item" href="#">Categorias</a></li>
-                      <li><a class="dropdown-item" href="#">Productos</a></li>
+                      <li><a class="dropdown-item" href="marcas.php">Marcas</a></li>
+                      <li><a class="dropdown-item" href="categorias.php">Categorias</a></li>
+                      <li><a class="dropdown-item" href="productos.php">Productos</a></li>
                     </ul>
                   </div>
                 </li>
@@ -263,11 +263,10 @@
           <div class="col-md-3">
             <div class="info-logo">
               <h2>
-                Heustonn
+                Constructora y alquiler
               </h2>
               <p>
-                It is a long established fact that a reader will be distracted by the readable content of a page when
-                looking at its layout. The point of
+              "Descubre un mundo de posibilidades y déjanos construir tus sueños."
               </p>
             </div>
           </div>

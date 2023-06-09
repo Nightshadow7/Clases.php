@@ -9,8 +9,8 @@ require_once("../controlers/konfij.php");
 if (isset($_GET['id']) and isset($_GET['req'])) {
     if ($_GET['req']=="deleteconstructora"){
         $delete = new constructora();
-        $delete ->setID($_GET['id']);
-        $delete ->deleteSel();
+        $delete ->setId_constructora($_GET['id']);
+        $delete ->deleteconstructora();
         ?>
         <script>
           alert('¡Datos borrados satisfactoriamente!');

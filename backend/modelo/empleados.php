@@ -6,8 +6,9 @@ error_reporting(E_ALL);
 
 require_once("../controlers/konfij.php");
 
-$data = new Constructora();/* creamos nueva clase de config */
+$data = new Empleados();/* creamos nueva clase de config */
 $allData = $data->selectAll();
+print_r($allData)
 
 ?>
 
@@ -93,7 +94,7 @@ $allData = $data->selectAll();
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="v2">
                       <li><a class="dropdown-item" href="marcas.php">Marcas</a></li>
-                      <li><a class="dropdown-item" href="categorias.php">Categorias</a></li>
+                      <li><a class="dropdown-item" href="categorias.php">Categoria</a></li>
                       <li><a class="dropdown-item" href="productos.php">Productos</a></li>
                     </ul>
                   </div>
