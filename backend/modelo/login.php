@@ -70,16 +70,16 @@
                   </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href=""> Cliente </a>
+                  <a class="nav-link" href="cliente.php"> Cliente </a>
                 </li>
                 
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="" dropdownMenu="v2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <a class="" href="#">Login</a>
+                    <a class="" href="#">Inventario</a>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="v2">
-                      <li><a class="dropdown-item" href="marcas.php">Marcas</a></li>
+                      <li><a class="dropdown-item" href="marca.php">Marcas</a></li>
                       <li><a class="dropdown-item" href="categorias.php">Categorias</a></li>
                       <li><a class="dropdown-item" href="productos.php">Productos</a></li>
                     </ul>

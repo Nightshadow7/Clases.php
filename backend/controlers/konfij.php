@@ -141,24 +141,20 @@ class Cargo extends Conectar{
   
 }
 
-class Empleados extends Conectar{
+class Empleado extends Conectar{
     // variables
     private $id_empleado;
     private $constructora;
     private $nombre;
     private $apellido;
     private $cargo;
-    private $usuario;
-    private $password;
     // constructor
-    public function __construct($id_empleado = 0 , $constructora = "" , $nombre = "" ,$apellido = "", $cargo = "" , $usuario = "" , $password = "", $dbCnx = "" ){
+    public function __construct($id_empleado = 0 , $constructora = "" , $nombre = "" ,$apellido = "", $cargo = "" , $dbCnx = "" ){
         $this -> id_empleado=$id_empleado;
         $this -> constructora=$constructora;
         $this -> nombre=$nombre;
         $this -> apellido=$apellido;
         $this -> cargo=$cargo;
-        $this -> usuario=$usuario;
-        $this -> password=$password;
         parent::__construct($dbCnx);
     }
     // getters
@@ -177,32 +173,30 @@ class Empleados extends Conectar{
     public function getCargo(){
         $this->cargo;
     }
-    public function getUsuario(){
-        $this->usuario;
-    }
-    public function getPassword(){
-        $this->password;
-    }
     // setters
-    public function setId_cliente($id_cliente){
-        $this->id_cliente=$id_cliente;
+    public function setId_empleado($id_empleado){
+        $this->id_empleado=$id_empleado;
     }
-    public function setNom_cliente($nom_cliente){
-        $this->nom_cliente=$nom_cliente;
+    public function setConstructora($constructora){
+        $this->constructora=$constructora;
     }
-    public function setCelular_clien($celular_clien){
-        $this->celular_clien=$celular_clien;
+    public function setNombre($nombre){
+        $this->nombre=$nombre;
     }
-    public function setCompañia($compañia){
-        $this->compañia= $compañia;
+    public function setApellido($apellido){
+        $this->apellido= $apellido;
+    }
+    public function setCargo($cargo){
+        $this->cargo= $cargo;
     }
     // metodos
     public function insertData(){
         try {
-            $stm = $this->dbCnx->prepare("INSERT INTO clientes(nom_cliente,celular_clien,compañia) VALUES(:nomcli,:celcli,:comp)");
-            $stm->bindParam(':nomcli', $this->nom_cliente);
-            $stm->bindParam(':celcli', $this->celular_clien);
-            $stm->bindParam(':comp', $this->compañia);
+            $stm = $this->dbCnx->prepare("INSERT INTO Empleado(constructora , nombre , apellido , cargo) VALUES(:con,:nomb,:apel,:car)");
+            $stm->bindParam(':con', $this -> constructora);
+            $stm->bindParam(':nomb', $this -> nombre);
+            $stm->bindParam(':apel', $this -> apellido);
+            $stm->bindParam(':car', $this -> cargo);
             $stm->execute();
         } catch (Exception $e) {
             $e->getMessage();
@@ -210,7 +204,7 @@ class Empleados extends Conectar{
     }
     public function selectAll() {
         try {
-            $stm=$this->dbCnx->prepare("SELECT * FROM clientes");
+            $stm=$this->dbCnx->prepare("SELECT * FROM Empleado");
             $stm->execute();
             return $stm->fetchAll();
         } catch (Exception $e) {
@@ -219,7 +213,7 @@ class Empleados extends Conectar{
     }
     public function delete(){
         try {
-          $stm = $this->dbCnx->prepare("DELETE FROM clientes WHERE id_cliente = ?");
+          $stm = $this->dbCnx->prepare("DELETE FROM Empleado WHERE id_empleado = ?");
           $stm->execute(array($this->id));
           return $stm -> fetchAll();
             //   para saber como esta la pagina ahora
@@ -229,55 +223,55 @@ class Empleados extends Conectar{
     }
 }
 
-class Proveedores extends Conectar{
+class Cliente extends Conectar{
   // variables
-  private $id_proveedor;
-  private $nombre_proveedor;
-  private $telefono_proveedor;
-  private $ciudad_proveedor;
+  private $id_cliente;
+  private $nombre;
+  private $apellido;
+  private $telefono;
   // constructor
-  public function __construct($id_proveedor = 0 , $nombre_proveedor = "" , $telefono_proveedor = "" , $ciudad_proveedor = "" , $dbCnx = ""){
-      $this->id_proveedor = $id_proveedor;
-      $this->nombre_proveedor= $nombre_proveedor;
-      $this->telefono_proveedor= $telefono_proveedor;
-      $this->ciudad_proveedor = $ciudad_proveedor;
+  public function __construct($id_cliente = 0 , $nombre = " " , $apellido = " " , $telefono = " " , $dbCnx = " "){
+      $this->id_cliente = $id_cliente;
+      $this->nombre= $nombre;
+      $this->apellido= $apellido;
+      $this->telefono = $telefono;
       parent::__construct($dbCnx);
   }
     // getters
-    public function getId_proveedor(){
-        return $this->id_proveedor;
+    public function getId_cliente(){
+        return $this->id_cliente;
     }
-    public function getNombre_proveedor(){
-        return $this->nombre_proveedor;
+    public function getNombre(){
+        return $this->nombre;
     }
-    public function getTelefono_proveedor(){
-        return $this->telefono_proveedor;
+    public function getApellido(){
+        return $this->apellido;
     }
-    public function getCiudad_proveedor(){
-        return $this->ciudad_proveedor;
+    public function getTelefono(){
+        return $this->telefono;
     }
 
   // setters
-  public function setId_proveedor($id_proveedor){
-      $this->id_proveedor=$id_proveedor;
+  public function setId_cliente($id_cliente){
+      $this->id_cliente=$id_cliente;
   }
-  public function setNombre_proveedor($nombre_proveedor){
-      $this->nombre_proveedor= $nombre_proveedor;
+  public function setNombre($nombre){
+      $this->nombre= $nombre;
   }
-  public function setTelefono_proveedor($telefono_proveedor){
-      $this->telefono_proveedor=$telefono_proveedor;
+  public function setApellido($apellido){
+      $this->apellido=$apellido;
   }
-  public function setCiudad_proveedor($ciudad_proveedor) {
-      $this->ciudad_proveedor = $ciudad_proveedor;
+  public function setTelefono($telefono) {
+      $this->telefono = $telefono;
   }
   
   // metodos
   public function insertData(){
       try {
-          $stm = $this->dbCnx->prepare("INSERT INTO proveedores(nombre_proveedor,telefono_proveedor,ciudad_proveedor) VALUES(:nompro,:telpro,:ciupro)");
-          $stm->bindParam(":nompro",$this->nombre_proveedor);
-          $stm->bindParam(":telpro",$this->telefono_proveedor);
-          $stm->bindParam(":ciupro",$this->ciudad_proveedor);
+          $stm = $this->dbCnx->prepare("INSERT INTO Cliente(nombre,apellido,telefono) VALUES(:nomr,:ape,:tell)");
+          $stm->bindParam(":nomr",$this -> nombre);
+          $stm->bindParam(":ape",$this -> apellido);
+          $stm->bindParam(":tell",$this -> telefono);
           $stm->execute();
       } catch (Exception $e) {
           $e->getMessage();
@@ -285,7 +279,7 @@ class Proveedores extends Conectar{
   }
   public function selectAll() {
       try {
-          $stm=$this->dbCnx->prepare("SELECT * FROM proveedores");
+          $stm=$this->dbCnx->prepare("SELECT * FROM Cliente");
           $stm->execute();
           return $stm->fetchAll();
       } catch (Exception $e) {
@@ -294,7 +288,123 @@ class Proveedores extends Conectar{
   }
   public function delete(){
       try {
-        $stm = $this->dbCnx->prepare("DELETE FROM proveedores WHERE id_proveedor=?");
+        $stm = $this->dbCnx->prepare("DELETE FROM Cliente WHERE id_cliente = ?");
+        $stm->execute(array($this->id));
+        return $stm -> fetchAll();
+          //   para saber como esta la pagina ahora
+      } catch (Exception $e) {
+          return $e -> getMessage();
+      } 
+  }
+}
+
+class Marca extends Conectar{
+  #variables
+  private $id_marca;
+  private $nombre;
+
+  #constructor
+  public function __construct( $id_marca = 0 , $nombre = " " , $dbCnx = " " ){
+      $this->id_marca=$id_marca;
+      $this->nombre=$nombre;
+      parent::__construct($dbCnx);
+  }
+
+  #getter for variables
+  public function getId_marca(){
+      return $this->id_marca;
+  }
+  public function getNombre() {
+      return $this->nombre;
+  }
+  #setter for variables
+  public function setId_marca($id_marca){
+      $this->id_marca = $id_marca;
+  }
+  public function setNombre($nombre) {
+      $this->nombre = $nombre;
+  }
+  
+  #metodos
+  public function insertData(){
+      try {
+          $stm = $this->dbCnx->prepare("INSERT INTO Marca(nombre) VALUES(:nomp)");
+          $stm->bindParam(":nomp", $this->nombre);
+          $stm->execute();
+      } catch (Exception $e) {
+          $e->getMessage();
+      }
+  }
+  public function selectAll() {
+      try {
+          $stm=$this->dbCnx->prepare("SELECT * FROM Marca");
+          $stm->execute();
+          return $stm->fetchAll();
+      } catch (Exception $e) {
+          $e->getMessage();
+      } 
+  }
+  public function delete(){
+      try {
+        $stm = $this->dbCnx->prepare("DELETE FROM Marca WHERE id_marca = ?");
+        $stm->execute(array($this->id));
+        return $stm -> fetchAll();
+          //   para saber como esta la pagina ahora
+      } catch (Exception $e) {
+          return $e -> getMessage();
+      } 
+  }
+}
+
+class Categorias extends Conectar{
+  #variables
+  private $id_categoria;
+  private $nombre;
+
+  #constructor
+  public function __construct( $id_categoria = 0 , $nombre = " " , $dbCnx = " " ){
+      $this->id_categoria=$id_categoria;
+      $this->nombre=$nombre;
+      parent::__construct($dbCnx);
+  }
+
+  #getter for variables
+  public function getId_categoria(){
+      return $this->id_categoria;
+  }
+  public function getNombre() {
+      return $this->nombre;
+  }
+  #setter for variables
+  public function setId_categoria($id_categoria){
+      $this->id_categoria = $id_categoria;
+  }
+  public function setNombre($nombre) {
+      $this->nombre = $nombre;
+  }
+  
+  #metodos
+  public function insertData(){
+      try {
+          $stm = $this->dbCnx->prepare("INSERT INTO Categorias(nombre) VALUES(:nomc)");
+          $stm->bindParam(":nomc", $this->nombre);
+          $stm->execute();
+      } catch (Exception $e) {
+          $e->getMessage();
+      }
+  }
+  public function selectAll() {
+      try {
+          $stm=$this->dbCnx->prepare("SELECT * FROM Categorias");
+          $stm->execute();
+          return $stm->fetchAll();
+      } catch (Exception $e) {
+          $e->getMessage();
+      } 
+  }
+  public function delete(){
+      try {
+        $stm = $this->dbCnx->prepare("DELETE FROM Categorias WHERE id_categoria = ?");
         $stm->execute(array($this->id));
         return $stm -> fetchAll();
           //   para saber como esta la pagina ahora
@@ -305,228 +415,97 @@ class Proveedores extends Conectar{
 }
 
 class Productos extends Conectar{
-  #variables
-  private $id_producto;
-  private $nombre_del_producto;
-  private $categoria;
-  private $proveedor;
-  private $stock;
-  private $precio_unitario;
-  private $unidades_pedidas;
-  private $descontinuado;
-
-  #constructor
-  public function __construct($id_producto = 0 , $nombre_del_producto = "" , $categoria = 0 , $proveedor = 0 , $stock = 0 , $precio_unitario = 0 , $unidades_pedidas = 0 , $descontinuado = "" , $dbCnx = ""){
-      $this->id_producto=$id_producto;
-      $this->nombre_del_producto=$nombre_del_producto;
-      $this->categoria=$categoria;
-      $this->proveedor=$proveedor;
-      $this->stock=$stock;
-      $this->precio_unitario=$precio_unitario;
-      $this->unidades_pedidas=$unidades_pedidas;
-      $this->descontinuado=$descontinuado;
-      parent::__construct($dbCnx);
-  }
-
-  #getter for variables
-    public function getId_producto(){
-        return $this->id_producto;
-    }
-    public function getNombre_del_producto() {
-        return $this->nombre_del_producto;
-    }
-    public function getCategoria() {
-        return $this->categoria;
-    }
-    public function getProveedor() {
-        return $this->proveedor;
-    }
-    public function getStock() {
-        return $this->stock;
-    }
-    public function getPrecio_unitario(){
-        return $this->precio_Unitariot;
-    }
-    public function getUnidades_pedidas() {
-        return $this->unitsPedidas;
-    }
-    public function getDescontinuado(){
-        return $this->descontinuado;
-    }
-  #setter for variables
-  public function setID($id_producto){
-      $this->id_producto=$id_producto;
-  }
-  public function setNombre_del_producto($nombre_del_producto) {
-      $this->nombre_del_producto=$nombre_del_producto;
-  }
-  public function setCategoria($categoria) {
-      $this->categoria=$categoria;
-  }
-  public function setProveedor($proveedor) {
-      $this->proveedor=$proveedor;
-  }
-  public function setStock($stock) {
-      $this->stock=$stock;
-  }
-  public function setPrecio_unitario($precio_unitario){
-      $this->precio_unitario=$precio_unitario;
-  }
-  public function setUnidades_pedidas($unidades_pedidas) {
-      $this->unidades_pedidas=$unidades_pedidas;
-  }
-  public function setDescontinuado($descontinuado){
-      $this->descontinuado=$descontinuado;
-  }
-  
-  #metodos
-  public function insertData(){
-      try {
-          $stm = $this->dbCnx->prepare("INSERT INTO productos(nombre_del_producto,categoria,proveedor,stock,precio_unitario,unidades_pedidas,descontinuado) VALUES(:nompro,:catpro,:provcat,:stopro,:prepro,unipro,despro)");
-          $stm->bindParam(":nompro", $this->nombre_del_producto);
-          $stm->bindParam(":catpro", $this->categoria);
-          $stm->bindParam(":provcat", $this->proveedor);
-          $stm->bindParam(":stopro", $this->stock);
-          $stm->bindParam(":prepro", $this->precio_unitario);
-          $stm->bindParam(":unipro", $this->unidades_pedidas);
-          $stm->bindParam(":despro", $this->descontinuado);
-          $stm->execute();
-      } catch (Exception $e) {
-          $e->getMessage();
-      }
-  }
-  public function selectAll() {
-      try {
-          $stm=$this->dbCnx->prepare("SELECT * FROM productos");
-          $stm->execute();
-          return $stm->fetchAll();
-      } catch (Exception $e) {
-          $e->getMessage();
-      } 
-  }
-  public function delete(){
-      try {
-        $stm = $this->dbCnx->prepare("DELETE FROM productos WHERE id_producto = ?");
-        $stm->execute(array($this->id));
-        return $stm -> fetchAll();
-          //   para saber como esta la pagina ahora
-      } catch (Exception $e) {
-          return $e -> getMessage();
-      } 
-  }
-  /* nombre constructora y proveedores */
-  public function nameCate($categoria){
-      try {
-          $stm = $this->dbCnx->prepare("SELECT idegoria,nombre FROM constructora ");
-          $stm->execute(array($categoria));
-          return $stm->fetchColumn();
-            //   para saber como esta la pagina ahora
-        } catch (Exception $e) {
-            return $e -> getMessage();
-        } 
-
-  }
-  public function nameProv($proveedor){
-      try {
-          $stm = $this->dbCnx->prepare("SELECT id_proveedor,nombre_proveedor FROM proveedores ");
-          $stm->execute(array($proveedor));
-          return $stm->fetchColumn();
-            //   para saber como esta la pagina ahora
-        } catch (Exception $e) {
-            return $e -> getMessage();
-        } 
-  }
-}
-
-class Venta extends Conectar{
   /* variable */
-  private$id_factura;
-  private$fecha;
-  private$empleado;
-  private$cliente;
-  private$id_fac;
-  private$producto;
-  private$cantidad;
-  private$descuento;
+  private $id_producto;
+  private $nombre;
+  private $categoria;
+  private $marca;
+  private $precio;
+  private $unidades;
+  private $descontinuado;
+  private $descripcion;
   /* constructor */
-  public function __construct($id_factura = 0 , $fecha = "" , $empleado = 0 , $cliente = 0 , $id_fac = 0 , $producto = 0 , $cantidad = 0 , $descuento = 0 , $dbCnx = "" ){
-      $this->id_factura=$id_factura;
-      $this->fecha=$fecha;
-      $this->empleado=$empleado;
-      $this->cliente=$cliente;
-      $this->id_fac=$id_fac;
-      $this->producto=$producto;
-      $this->cantidad=$cantidad;
-      $this->descuento=$descuento;
+  public function __construct($id_producto = 0 , $nombre = " " , $categoria = 0 , $marca = 0 , $precio = 0 , $unidades = 0 , $descontinuado = " " , $descripcion = " " , $dbCnx = " " ){
+      $this->id_producto=$id_producto;
+      $this->nombre=$nombre;
+      $this->categoria=$categoria;
+      $this->marca=$marca;
+      $this->precio=$precio;
+      $this->unidades=$unidades;
+      $this->descontinuado=$descontinuado;
+      $this->descripcion=$descripcion;
       parent::__construct($dbCnx);
   }
   /* getters */
-  public function getId_factura(){
-    return $this->id_factura;
+  public function getId_producto(){
+    return $this->id_producto;
   }
-  public function getFecha(){
-      return $this->fecha;
+  public function getNombre(){
+      return $this->nombre;
   }
-  public function getEmpleado(){
-      return $this->empleado;
+  public function getCategoria(){
+      return $this->categoria;
   }
-  public function getCliente(){
-      return $this->cliente;
+  public function getMarca(){
+      return $this->marca;
   }
-    // getters factura detalles
-    public function getId_fac(){
-      return $this->id_fac;
-    }
-    public function getProducto(){
-      return $this->producto;
-    }
-    public function getCantidad(){
-      return $this->cantidad;
-    }
-    public function getDescuento(){
-      return $this->descuento;
-    }
+  public function getPrecio(){
+    return $this->precio;
+  }
+  public function getUnidades(){
+    return $this->unidades;
+  }
+  public function getDescontinuado(){
+    return $this->descontinuado;
+  }
+  public function getDescripcion(){
+    return $this->descripcion;
+  }
 
   /* setters */
-  public function setId_factura($id_factura){
-   $this->id_factura=$id_factura;
+  public function setId_producto($id_producto){
+   $this->id_producto=$id_producto;
   }
-  public function setFecha($fecha){
-   $this->fecha=$fecha;
+  public function setNombre($nombre){
+   $this->nombre=$nombre;
   }
-  public function setEmpleado($empleado){
-   $this->empleado=$empleado;
+  public function setCategoria($categoria){
+   $this->categoria=$categoria;
   }
-  public function setCliente($cliente){
-   $this->cliente=$cliente;
+  public function setMarca($marca){
+   $this->marca=$marca;
   }
-    // setters factura detalles 
-    public function setId_fac($id_fac){
-      $this->id_fac=$id_fac;
-    }
-    public function setProducto($producto){
-      $this->producto=$producto;
-    }
-    public function setCantidad($cantidad){
-      $this->cantidad=$cantidad;
-    }
-    public function setDescuento($descuento){
-      $this->descuento=$descuento;
-    }
+  public function setPrecio($precio){
+    $this->precio=$precio;
+  }
+  public function setUnidades($unidades){
+    $this->unidades=$unidades;
+  }
+  public function setDescontinuado($descontinuado){
+    $this->descontinuado=$descontinuado;
+  }
+  public function setDescripcion($descripcion){
+    $this->descripcion=$descripcion;
+  }
   /* metodos */
   public function insertData(){
       try {
-          $stm = $this->dbCnx->prepare("INSERT INTO facturas(fecha,id_empleado,id_cliente) VALUES(:fecfac,:empfac,:clifac)");
-          $stm->bindParam(':fecfac',$this->fecha);
-          $stm->bindParam(':empfac',$this->empleado);
-          $stm->bindParam(':clifac',$this->cliente);
+          $stm = $this->dbCnx->prepare("INSERT INTO Productos( nombre , categoria , marca , precio , unidades , descontinuado , descripcion) VALUES(:nomp,:catg,:marc,:pre,:uni,:desco,:descr)");
+          $stm->bindParam(':nomp',$this -> nombre);
+          $stm->bindParam(':catg',$this -> categoria);
+          $stm->bindParam(':marc',$this -> marca);
+          $stm->bindParam(':pre',$this -> precio);
+          $stm->bindParam(':uni',$this -> unidades);
+          $stm->bindParam(':desco',$this -> descontinuado);
+          $stm->bindParam(':descr',$this -> descripcion);
+          $stm->execute();
       } catch (Exception $e) {
           $e->getMessage();
       }
   }
   public function selectAll() {
       try {
-          $stm=$this->dbCnx->prepare("SELECT * FROM facturas");
+          $stm=$this->dbCnx->prepare("SELECT * FROM Productos");
           $stm->execute();
           return $stm->fetchAll();
       } catch (Exception $e) {
@@ -535,69 +514,12 @@ class Venta extends Conectar{
   }
   public function delete(){
       try {
-        $stm = $this->dbCnx->prepare("DELETE FROM facturas WHERE id_factura=?");
+        $stm = $this->dbCnx->prepare("DELETE FROM Productos WHERE id_producto=?");
         $stm->execute(array($this->id));
         return $stm -> fetchAll();
           //   para saber como esta la pagina ahora
       } catch (Exception $e) {
           return $e -> getMessage();
       } 
-  }
-  public function nameEmp($empleado){
-    try {
-        $stm = $this->dbCnx->prepare("SELECT id_empleado,nombre_emp FROM empleados");
-        $stm->execute(array($empleado));
-        return $stm->fetchColumn();
-          //   para saber como esta la pagina ahora
-      } catch (Exception $e) {
-          return $e -> getMessage();
-      } 
-
-  }
-  public function nameCli($cliente){
-    try {
-        $stm = $this->dbCnx->prepare("SELECT id_cliente,nom_cliente FROM clientes");
-        $stm->execute(array($cliente));
-        return $stm->fetchColumn();
-          //   para saber como esta la pagina ahora
-      } catch (Exception $e) {
-          return $e -> getMessage();
-      } 
-  }
-   /* metodos factura */
-   public function getLastId(){
-    $stm = $this->dbCnx->prepare("SELECT MAX(id_factura) FROM facturas");
-    $stm->execute();
-    return $stm->fetchColumn();
-  }
-  public function insertDatafac(){
-    try {
-        $stm = $this->dbCnx->prepare("INSERT INTO facturasDetalle(id_factura,id_producto,cantidad,descuento) VALUES(:facdet,:prodet,:candet,:desdet)");
-        $stm->bindParam(':facdet',$this->id_fac);
-        $stm->bindParam(':prodet',$this->producto);
-        $stm->bindParam(':candet',$this->cantidad);
-        $stm->bindParam(':desdet',$this->descuento);
-        $stm->execute();
-    } catch (Exception $e) {
-        $e->getMessage();
-    }
-  }
-  public function selectAllfac() {
-    try {
-        $stm = $this->dbCnx->prepare("SELECT * FROM facturasDetalle");
-        $stm->execute();
-        return $stm->fetchAll();
-    } catch (Exception $e) {
-        $e->getMessage();
-    }
-  }
-  public function deletefac(){
-    try {
-      $stm = $this->dbCnx->prepare("DELETE FROM facturasDetalle WHERE id_detalle = ?");
-      $stm->execute(array($this->id));
-      return $stm -> fetchAll();
-    } catch (Exception $e) {
-        $e->getMessage();
-    }
   }
 }

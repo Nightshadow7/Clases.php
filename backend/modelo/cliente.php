@@ -6,8 +6,11 @@ error_reporting(E_ALL);
 
 require_once("../controlers/konfij.php");
 
-$data = new Constructora();/* creamos nueva clase de config */
+$data = new Cliente();/* creamos nueva clase de config */
 $allData = $data->selectAll();
+
+print_r($allData);
+
 
 ?>
 
@@ -28,7 +31,7 @@ $allData = $data->selectAll();
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-  <title>Constructora</title>
+  <title>Clientes</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -53,7 +56,7 @@ $allData = $data->selectAll();
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="../../frontend/index.php">
             <span>
-              Login
+              Clientes
             </span>
           </a>
           <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
@@ -93,7 +96,7 @@ $allData = $data->selectAll();
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="v2">
                       <li><a class="dropdown-item" href="marca.php">Marcas</a></li>
-                      <li><a class="dropdown-item" href="categorias.php">Categorias</a></li>
+                      <li><a class="dropdown-item" href="categorias.php">Categoria</a></li>
                       <li><a class="dropdown-item" href="productos.php">Productos</a></li>
                     </ul>
                   </div>
@@ -117,7 +120,7 @@ $allData = $data->selectAll();
                 <div class="col-md-8 pt-5 mt-5 text-center">
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-outline-danger m-4 float-end" data-bs-toggle="modal" data-bs-target="#registrarProducto">
-                    Registrar nueva Constructora
+                    Registrar nuevo Cliente
                   </button>
 
                   <!-- Modal -->
@@ -125,16 +128,16 @@ $allData = $data->selectAll();
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title mt-5 bg-success" id="exampleModalLabel">Nueva Constructora</h5>
+                          <h5 class="modal-title mt-5 bg-success" id="exampleModalLabel">Nuevo cliente</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                           <form class="col d-flex flex-wrap" action="../controlers/rejitro.php" method="post">
                             <div class="mb-1 col-12">
-                              <label for="nombre" class="form-label">Nombre de la Constructora</label>
+                              <label for="nombre" class="form-label">Nombre del Cliente</label>
                               <input 
                                 type="text"
-                                placeholder="Ingrese el nombre de la constructora"
+                                placeholder="Ingrese el nombre del Cliente"
                                 id="nombre"
                                 name="nombre"
                                 class="form-control"
@@ -143,12 +146,12 @@ $allData = $data->selectAll();
                             </div>
 
                             <div class="mb-1 col-12">
-                              <label for="descripcion" class="form-label">Direccion</label>
+                              <label for="apellido" class="form-label">Apellido</label>
                               <input 
                                 type="text"
-                                placeholder="Ingrese su direccion"
-                                id="descripcion"
-                                name="direccion"
+                                placeholder="Ingrese su apellido del Cliente"
+                                id="apellido"
+                                name="apellido"
                                 class="form-control"
                                 required
                               />
@@ -158,7 +161,7 @@ $allData = $data->selectAll();
                               <label for="telefono" class="form-label">Telefono</label>
                               <input 
                                 type="number"
-                                placeholder="Ingrese el telefono de la empresa"
+                                placeholder="Ingrese el numero telefonico del Cliente"
                                 id="telefono"
                                 name="telefono"
                                 class="form-control"
@@ -167,7 +170,7 @@ $allData = $data->selectAll();
                             </div>
                             
                             <div class=" col-12 m-2">
-                              <button type="submit" class="btn btn-primary" value="constructora" name="guardar">Agregar Constructora</button>
+                              <button type="submit" class="btn btn-primary" value="cliente" name="guardar">Agregar Cliente</button>
                             </div>
 
                           </form>  
@@ -181,7 +184,7 @@ $allData = $data->selectAll();
                       <tr>
                         <th class="barra .text-light" scope="col">#</th>
                         <th class="barra .text-light" scope="col">NOMBRE</th>
-                        <th class="barra .text-light" scope="col">DIRECCION</th>
+                        <th class="barra .text-light" scope="col">APELLIDO</th>
                         <th class="barra .text-light" scope="col">TELEFONO</th>
                         <th class="barra .text-light" scope="col">BORRAR</th>
 
@@ -254,11 +257,11 @@ $allData = $data->selectAll();
                           endswitch;
                       ?>
                       <tr>
-                        <td> <?= $val['id_constructora']; ?></td>
+                        <td> <?= $val['id_cliente']; ?></td>
                         <td> <?= $val['nombre']; ?></td>
-                        <td> <?= $val['direccion']; ?></td>
+                        <td> <?= $val['apellido']; ?></td>
                         <td> <?= $val['telefono']; ?></td>
-                        <td><a href="../controlers/borar.php?id=<?= $val['id_constructora'] ?>&req=deleteconstructora" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
+                        <td><a href="../controlers/borar.php?id=<?= $val['id_cliente'] ?>&req=deletecliente" class="<?= $but ?>"><i class="bi bi-trash3"></i> Borrar</a></td>
                       </tr>
                       <?php } ?>
                     </tbody>

@@ -10,9 +10,7 @@ DROP TABLE IF EXISTS Marca;
 DROP TABLE IF EXISTS Categorias;
 DROP TABLE IF EXISTS Productos;
 DROP TABLE IF EXISTS Cotizacion;
-DROP TABLE IF EXISTS factura;
-
-
+DROP TABLE IF EXISTS factura;;
 
 CREATE TABLE Constructora(
   id_constructora INT NOT NULL AUTO_INCREMENT,
@@ -31,8 +29,6 @@ CREATE TABLE Cliente(
 );
 
 
-
-
 CREATE TABLE Cargo(
   id_cargo INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(50) NOT NULL,
@@ -45,8 +41,6 @@ CREATE TABLE Empleado(
   nombre VARCHAR(50) NOT NULL,
   apellido VARCHAR(50) NOT NULL,
   cargo INT,
-  usuario VARCHAR(50) NOT NULL,
-  password VARCHAR(50) NOT NULL,
   PRIMARY KEY (id_empleado),
   FOREIGN KEY (constructora) REFERENCES Constructora(id_constructora),
   FOREIGN KEY (cargo) REFERENCES Cargo(id_cargo)
@@ -72,8 +66,10 @@ CREATE TABLE Productos(
   nombre VARCHAR(50) NOT NULL,
   categoria INT,
   marca INT,
-  descripcion VARCHAR(100) NOT NULL,
   precio INT NOT NULL,
+  unidades INT NOT NULL,
+  descontinuado VARCHAR(5) NOT NULL,
+  descripcion VARCHAR(100) NOT NULL,
   PRIMARY KEY (id_producto),
   FOREIGN KEY (categoria) REFERENCES Categorias(id_categoria),
   FOREIGN KEY (marca) REFERENCES Marca(id_marca)

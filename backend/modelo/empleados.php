@@ -6,9 +6,15 @@ error_reporting(E_ALL);
 
 require_once("../controlers/konfij.php");
 
-$data = new Empleados();/* creamos nueva clase de config */
+$data = new Empleado();/* creamos nueva clase de config */
 $allData = $data->selectAll();
-print_r($allData)
+$company = new Constructora(); //sacamops la llave foranea de las constructoras disponibles
+$allCompany = $company -> selectAll();
+$position = new Cargo(); //sacamos la llave foranea de los cargos disponibles 
+$allPosition = $position -> selectAll();
+print_r($allData);
+print_r($allCompany);
+print_r($allPosition);
 
 ?>
 
@@ -54,7 +60,7 @@ print_r($allData)
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="../../frontend/index.php">
             <span>
-              Login
+              Empleados
             </span>
           </a>
           <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
@@ -84,16 +90,16 @@ print_r($allData)
                   </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href=""> Cliente </a>
+                  <a class="nav-link" href="cliente.php"> Cliente </a>
                 </li>
                 
                 <li class="nav-item">
                   <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="" dropdownMenu="v2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <a class="" href="#">Login</a>
+                    <a class="" href="#">Inventario</a>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="v2">
-                      <li><a class="dropdown-item" href="marcas.php">Marcas</a></li>
+                      <li><a class="dropdown-item" href="marca.php">Marcas</a></li>
                       <li><a class="dropdown-item" href="categorias.php">Categoria</a></li>
                       <li><a class="dropdown-item" href="productos.php">Productos</a></li>
                     </ul>
@@ -118,7 +124,7 @@ print_r($allData)
                 <div class="col-md-8 pt-5 mt-5 text-center">
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-outline-danger m-4 float-end" data-bs-toggle="modal" data-bs-target="#registrarProducto">
-                    Registrar nueva Constructora
+                    Registrar nuevo empleado
                   </button>
 
                   <!-- Modal -->
@@ -126,16 +132,29 @@ print_r($allData)
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title mt-5 bg-success" id="exampleModalLabel">Nueva Constructora</h5>
+                          <h5 class="modal-title mt-5 bg-success" id="exampleModalLabel">Nuevo Empleado</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                           <form class="col d-flex flex-wrap" action="../controlers/rejitro.php" method="post">
                             <div class="mb-1 col-12">
-                              <label for="nombre" class="form-label">Nombre de la Constructora</label>
+                              <label for="company" class="form-label">Nombre de la Constructora</label>
+                              <select name="constructora" id="company" class="form-select mb-1">
+                                <?php
+                                  foreach ($allCompany as $key => $val): 
+                                  ?> 
+                                  <option value="<?= $val['id_constructora']?>"><?= $val['nombre']?></option>
+                                <?php 
+                                endforeach; 
+                                ?> 
+                              </select>
+                            </div>
+
+                            <div class="mb-1 col-6">
+                              <label for="nombre" class="form-label">Nombre</label>
                               <input 
                                 type="text"
-                                placeholder="Ingrese el nombre de la constructora"
+                                placeholder="Ingrese su nombre"
                                 id="nombre"
                                 name="nombre"
                                 class="form-control"
@@ -143,32 +162,33 @@ print_r($allData)
                               />
                             </div>
 
-                            <div class="mb-1 col-12">
-                              <label for="descripcion" class="form-label">Direccion</label>
+                            <div class="mb-1 col-6">
+                              <label for="apellido" class="form-label">Apellido</label>
                               <input 
                                 type="text"
-                                placeholder="Ingrese su direccion"
-                                id="descripcion"
-                                name="direccion"
+                                placeholder="Ingrese su apellido"
+                                id="apellido"
+                                name="apellido"
                                 class="form-control"
                                 required
                               />
                             </div>
 
                             <div class="mb-1 col-12">
-                              <label for="telefono" class="form-label">Telefono</label>
-                              <input 
-                                type="number"
-                                placeholder="Ingrese el telefono de la empresa"
-                                id="telefono"
-                                name="telefono"
-                                class="form-control"
-                                required
-                              />
+                              <label for="cargo" class="form-label">Cargo que Ocupa</label>
+                              <select name="cargo" id="cargo" class="form-select mb-1">
+                                <?php
+                                  foreach ($allPosition as $key => $val): 
+                                  ?> 
+                                  <option value="<?= $val['id_cargo']?>"><?= $val['nombre']?></option>
+                                <?php 
+                                endforeach; 
+                                ?> 
+                              </select>
                             </div>
                             
                             <div class=" col-12 m-2">
-                              <button type="submit" class="btn btn-primary" value="constructora" name="guardar">Agregar Constructora</button>
+                              <button type="submit" class="btn btn-primary" value="empleado" name="guardar">Agregar Empleado</button>
                             </div>
 
                           </form>  
@@ -181,9 +201,10 @@ print_r($allData)
                     <thead>
                       <tr>
                         <th class="barra .text-light" scope="col">#</th>
+                        <th class="barra .text-light" scope="col">CONSTRUCTORA</th>
                         <th class="barra .text-light" scope="col">NOMBRE</th>
-                        <th class="barra .text-light" scope="col">DIRECCION</th>
-                        <th class="barra .text-light" scope="col">TELEFONO</th>
+                        <th class="barra .text-light" scope="col">APELLIDO</th>
+                        <th class="barra .text-light" scope="col">CARGO</th>
                         <th class="barra .text-light" scope="col">BORRAR</th>
 
                         <!-- <th class="barra" scope="col">EDITAR</th> -->
@@ -255,11 +276,12 @@ print_r($allData)
                           endswitch;
                       ?>
                       <tr>
-                        <td> <?= $val['id_constructora']; ?></td>
+                        <td> <?= $val['id_empleado']; ?></td>
+                        <td> <?= $val['constructora']; ?></td>
                         <td> <?= $val['nombre']; ?></td>
-                        <td> <?= $val['direccion']; ?></td>
-                        <td> <?= $val['telefono']; ?></td>
-                        <td><a href="../controlers/borar.php?id=<?= $val['id_constructora'] ?>&req=deleteconstructora" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
+                        <td> <?= $val['apellido']; ?></td>
+                        <td> <?= $val['cargo']; ?></td>
+                        <td><a href="../controlers/borar.php?id=<?= $val['id_empleado'] ?>&req=deleteempleado" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
                       </tr>
                       <?php } ?>
                     </tbody>

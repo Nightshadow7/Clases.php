@@ -22,6 +22,7 @@ if(isset($_POST["guardar"])):
         document.location='../modelo/constructora.php';
       </script>
       <?php
+
     elseif ($nano === "cargos"):
       $guardar = new Cargo();
       $guardar->setNombre($_POST['nombre']);
@@ -33,48 +34,73 @@ if(isset($_POST["guardar"])):
         document.location='../modelo/cargos.php';
       </script>
       <?php
-    elseif ($nano === "c"):
-      $guardar = new Clientes();
-      $guardar->setNom_cliente($_POST['nom_cliente']);
-      $guardar->setCelular_clien($_POST['celular_clien']);
-      $guardar->setCompañia($_POST['compañia']);
+    elseif ($nano === "empleado"):
+      $guardar = new Empleado();
+      $guardar->setConstructora($_POST['constructora']);
+      $guardar->setNombre($_POST['nombre']);
+      $guardar->setApellido($_POST['apellido']);
+      $guardar->setCargo($_POST['cargo']);
       $guardar->insertData();
+      print_r($guardar);
       ?>
       <script>
         alert("Los datos fueron enviados correctamente");
-        document.location='../clientes.php';
+        document.location='../modelo/empleados.php';
       </script>
       <?php
-    
-    elseif ($nano === ""):
-      $guardar = new Proveedores();
-      $guardar->setNombre_proveedor($_POST['nombre_proveedor']);
-      $guardar->setTelefono_proveedor($_POST['telefono_proveedor']);
-      $guardar->setCiudad_proveedor($_POST['ciudad_proveedor']);
+
+    elseif ($nano === "cliente"):
+      $guardar = new Cliente();
+      $guardar->setNombre($_POST['nombre']);
+      $guardar->setApellido($_POST['apellido']);
+      $guardar->setTelefono($_POST['telefono']);
       $guardar->insertData();
+      print_r($guardar);
       ?>
       <script>
         alert("Los datos fueron enviados correctamente");
-        document.location='../proveedores.php';
+        document.location='../modelo/cliente.php';
+      </script>
+      <?php
+    elseif ($nano === "marca"):
+      $guardar = new Marca();
+      $guardar->setNombre($_POST['nombre']);
+      $guardar->insertData();
+      print_r($guardar);
+      ?>
+      <script>
+        alert("Los datos fueron enviados correctamente");
+        document.location='../modelo/marca.php'
+      </script>
+      <?php
+    elseif ($nano === "categorias"):
+      $guardar = new Categorias();
+      $guardar->setNombre($_POST['nombre']);
+      $guardar->insertData();
+      print_r($guardar);
+      ?>
+      <script>
+        alert("Los datos fueron enviados correctamente");
+        document.location='../modelo/categorias.php'
       </script>
       <?php
     elseif ($nano === "productos"):
       $guardar = new Productos();
-      $guardar->setNombre_del_producto($_POST['nombre_del_producto']);
+      $guardar->setNombre($_POST['nombre']);
       $guardar->setCategoria($_POST['categoria']);
-      $guardar->setProveedor($_POST['proveedor']);
-      $guardar->setStock($_POST['stock']);
-      $guardar->setPrecio_unitario($_POST['precio_unitario']);
-      $guardar->setUnidades_pedidas($_POST['unidades_pedidas']);
+      $guardar->setMarca($_POST['marca']);
+      $guardar->setPrecio($_POST['precio']);
+      $guardar->setUnidades($_POST['unidades']);
       $guardar->setDescontinuado($_POST['descontinuado']);
-      print_r($guardar);
+      $guardar->setDescripcion($_POST['descripcion']);
       $guardar->insertData();
+      print_r($guardar);
       ?>
       <script>
-        /**alert("Los datos fueron enviados correctamente");
-        document.location='../productos.php'
+        // alert("Los datos fueron enviados correctamente");
+        // document.location='../modelo/productos.php'
       </script>
       <?php
     endif;
-endif; 
+endif;
 ?>

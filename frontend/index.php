@@ -35,7 +35,7 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="">
             <span>
              Constructora
             </span>
@@ -53,7 +53,7 @@
                   <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href=""> Register </a>
+                  <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-toggle="#registerModal"> Register </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../backend/modelo/login.php"> Login </a>
@@ -75,6 +75,40 @@
     </header>
     <!-- end header section -->
     <!-- slider section -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerMOdalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="registerModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="loginLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <section class=" slider_section position-relative">
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -206,15 +240,13 @@
           </h3>
         </div>
         <p class="layout_padding2-top">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        "Somos una empresa apasionada por la construcción, comprometidos con la calidad y la eficiencia. Con experiencia y profesionalismo, brindamos soluciones integrales para hacer realidad tus proyectos."
         </p>
         <div class="img-box layout_padding2">
           <img src="images/about-img.jpg" alt="">
         </div>
         <p class="layout_padding2-bottom">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+          
         </p>
       </div>
       <div class="container">
