@@ -523,3 +523,138 @@ class Productos extends Conectar{
       } 
   }
 }
+
+class Cotizacion extends Conectar{
+  /* variable */
+  private $id_cotizacion;
+  private $empleado;
+  private $cliente;
+  private $fecha;
+  private $factura;
+  private $producto;
+  private $cantidad;
+  /* constructor */
+  public function __construct($id_cotizacion = 0 , $empleado = 0 , $cliente = 0 , $fecha = " " , $factura = 0 , $producto = 0 , $cantidad = 0 , $dbCnx = " " ){
+      $this->id_cotizacion=$id_cotizacion;
+      $this->empleado=$empleado;
+      $this->cliente=$cliente;
+      $this->fecha=$fecha;
+      $this->factura=$factura;
+      $this->producto=$producto;
+      $this->cantidad=$cantidad;
+      parent::__construct($dbCnx);
+  }
+  /* getters */
+  public function getId_cotizacion(){
+    return $this->id_cotizacion;
+  }
+  public function getEmpleado(){
+      return $this->empleado;
+  }
+  public function getCliente(){
+      return $this->cliente;
+  }
+  public function getFecha(){
+      return $this->fecha;
+  }
+  public function getFactura(){
+    return $this->factura;
+  }
+  public function getProducto(){
+    return $this->producto;
+  }
+  public function getCantidad(){
+    return $this->cantidad;
+  }
+
+  /* setters */
+  public function setId_cotizacion($id_cotizacion){
+   $this->id_cotizacion=$id_cotizacion;
+  }
+  public function setEmpleado($empleado){
+   $this->empleado=$empleado;
+  }
+  public function setCliente($cliente){
+   $this->cliente=$cliente;
+  }
+  public function setFecha($fecha){
+   $this->fecha=$fecha;
+  }
+  public function setFactura($factura){
+    $this->factura=$factura;
+  }
+  public function setProducto($producto){
+    $this->producto=$producto;
+  } 
+  public function setCantidad($cantidad){
+    $this->cantidad=$cantidad;
+  } 
+  /* metodos */
+  public function insertData(){
+      try {
+          $stm = $this->dbCnx->prepare("INSERT INTO Cotizacion( empleado , cliente , fecha ) VALUES(:empl,:clien,:fech)");
+          $stm->bindParam(':empl',$this -> empleado);
+          $stm->bindParam(':clien',$this -> cliente);
+          $stm->bindParam(':fech',$this -> fecha);
+          $stm->execute();
+      } catch (Exception $e) {
+          $e->getMessage();
+      }
+  }
+  public function selectAll() {
+      try {
+          $stm=$this->dbCnx->prepare("SELECT * FROM Cotizacion");
+          $stm->execute();
+          return $stm->fetchAll();
+      } catch (Exception $e) {
+          $e->getMessage();
+      } 
+  }
+  public function delete(){
+      try {
+        $stm = $this->dbCnx->prepare("DELETE FROM Cotizacion WHERE id_producto=?");
+        $stm->execute(array($this->id));
+        return $stm -> fetchAll();
+          //   para saber como esta la pagina ahora
+      } catch (Exception $e) {
+          return $e -> getMessage();
+      } 
+  }
+
+  public function getLastId(){
+    $stat = $this->dbCnx->prepare("SELECT MAX(id_cotizacion) FROM Cotizacion;");
+    $stat->execute();
+    return $stat->fetchColumn();
+  }
+
+  public function insertDatafac(){
+    try {
+        $stm = $this->dbCnx->prepare("INSERT INTO factura( factura , producto , cantidad) VALUES(:fact,:prod,:cant)");
+        $stm->bindParam(':fact',$this -> factura);
+        $stm->bindParam(':prod',$this -> producto);
+        $stm->bindParam(':cant',$this -> cantidad);
+        $stm->execute();
+    } catch (Exception $e) {
+        $e->getMessage();
+    }
+  }
+  public function selectAllfac() {
+      try {
+          $stm=$this->dbCnx->prepare("SELECT * FROM factura");
+          $stm->execute();
+          return $stm->fetchAll();
+      } catch (Exception $e) {
+          $e->getMessage();
+      } 
+  }
+  public function deletefac(){
+      try {
+        $stm = $this->dbCnx->prepare("DELETE FROM factura WHERE factura=?");
+        $stm->execute(array($this->id));
+        return $stm -> fetchAll();
+          //   para saber como esta la pagina ahora
+      } catch (Exception $e) {
+          return $e -> getMessage();
+      } 
+  }
+}

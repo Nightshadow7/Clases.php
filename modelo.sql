@@ -87,11 +87,9 @@ CREATE TABLE Cotizacion(
 
 CREATE TABLE factura(
   factura INT,
-  cotizacion INT,
   producto INT,
+  cantidad INT NOT NULL,
   total INT NOT NULL,
-  fecha DATE NOT NULL,
   FOREIGN KEY (factura) REFERENCES Cotizacion(id_cotizacion),
-  FOREIGN KEY (cotizacion) REFERENCES Cotizacion(id_cotizacion),
   FOREIGN KEY (producto) REFERENCES Productos(id_producto)
 );

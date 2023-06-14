@@ -97,8 +97,27 @@ if(isset($_POST["guardar"])):
       print_r($guardar);
       ?>
       <script>
+        alert("Los datos fueron enviados correctamente");
+        document.location='../modelo/productos.php'
+      </script>
+      <?php
+    elseif ($nano === "cotizacion"):
+      $guardar = new Cotizacion();
+      $guardar->setEmpleado($_POST['empleado']);
+      $guardar->setCliente($_POST['cliente']);
+      $guardar->setFecha($_POST['fecha']);
+      $guardar->insertData();
+      print_r($guardar);
+      $factura = $save->getLastId();
+      $guardar->setFactura($factura);
+      $guardar->setProducto($_POST['producto']);
+      $guardar->setCantidad($_POST['cantidad']);
+      $guardar->insertDatafac();
+      print_r($guardar);
+      ?>
+      <script>
         // alert("Los datos fueron enviados correctamente");
-        // document.location='../modelo/productos.php'
+        // document.location='../modelo/cotizacion.php'
       </script>
       <?php
     endif;

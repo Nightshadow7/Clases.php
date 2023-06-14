@@ -6,15 +6,21 @@ error_reporting(E_ALL);
 
 require_once("../controlers/konfij.php");
 
-$data = new Productos();/* creamos nueva clase de config */
+$data = new Cotizacion();/* creamos nueva clase de config */
 $allData = $data->selectAll();
-$cathegory = new Categorias(); //sacamops la llave foranea de las constructoras disponibles
-$allCathegory = $cathegory -> selectAll();
-$brand = new Marca(); //sacamos la llave foranea de los cargos disponibles 
-$allBrand = $brand -> selectAll();
+$allFactura = $data -> selectAllfac();
+
+$employee = new Empleado(); //sacamops la llave foranea de las constructoras disponibles
+$allEmployee = $employee -> selectAll();
+$client = new Cliente(); //sacamos la llave foranea de los cargos disponibles 
+$allClient = $client -> selectAll();
+$product = new Productos(); //sacamos la llave foranea de productos 
+$allProduct = $product -> selectAll();
+
 print_r($allData);
-print_r($allCathegory);
-print_r($allBrand);
+print_r($allEmployee);
+print_r($allClient);
+print_r($allProduct);
 
 ?>
 
@@ -60,7 +66,7 @@ print_r($allBrand);
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="../../frontend/index.php">
             <span>
-              Productos
+              Cotizacion y Facturacion
             </span>
           </a>
           <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
@@ -124,7 +130,7 @@ print_r($allBrand);
                 <div class="col-md-8 pt-5 mt-5 text-center">
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-outline-danger m-4 float-end" data-bs-toggle="modal" data-bs-target="#registrarProducto">
-                    Registrar nuevo Producto
+                    Registrar nueva factura
                   </button>
 
                   <!-- Modal -->
@@ -132,97 +138,77 @@ print_r($allBrand);
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title mt-5 bg-success" id="exampleModalLabel">Nuevo Producto</h5>
+                          <h5 class="modal-title mt-5 bg-success" id="exampleModalLabel">Nuevo Cotizacion</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                           <form class="col d-flex flex-wrap" action="../controlers/rejitro.php" method="post">
-                            <div class="mb-1 col-12">
-                              <label for="nombre" class="form-label">Nombre del Producto</label>
-                              <input 
-                                type="text"
-                                placeholder="Ingrese el nombre del Producto"
-                                id="nombre"
-                                name="nombre"
-                                class="form-control"
-                                required
-                              />
-                            </div>
 
-                            <div class="mb-1 col-6">
-                              <label for="cathegory" class="form-label">Categoria del Producto</label>
-                              <select name="categoria" id="cathegory" class="form-select mb-1">
+                            <div class="mb-1 col-12">
+                              <label for="employee" class="form-label">Empleado</label>
+                              <select name="empleado" id="employee" class="form-select mb-1">
                                 <?php
-                                  foreach ($allCathegory as $key => $val): 
+                                  foreach ($allEmployee as $key => $val): 
                                   ?> 
-                                  <option value="<?= $val['id_categoria']?>"><?= $val['nombre']?></option>
+                                  <option value="<?= $val['id_empleado']?>"><?= $val['nombre']?></option>
                                 <?php 
                                 endforeach; 
                                 ?> 
                               </select>
                             </div>
 
-                            <div class="mb-1 col-6">
-                              <label for="brand" class="form-label">Marca del Producto</label>
-                              <select name="marca" id="brand" class="form-select mb-1">
+                            <div class="mb-1 col-12">
+                              <label for="client" class="form-label">Nombre del Cliente</label>
+                              <select name="cliente" id="client" class="form-select mb-1">
                                 <?php
-                                  foreach ($allBrand as $key => $val): 
+                                  foreach ($allClient as $key => $val): 
                                   ?> 
-                                  <option value="<?= $val['id_marca']?>"><?= $val['nombre']?></option>
+                                  <option value="<?= $val['id_cliente']?>"><?= $val['nombre']?></option>
+                                <?php 
+                                endforeach; 
+                                ?> 
+                              </select>
+                            </div>
+                            
+                            <div class="mb-1 col-12">
+                              <label for="fecha" class="form-label">Fecha</label>
+                              <input 
+                                type="date"
+                                placeholder="Ingrese la fecha de facturacion"
+                                id="fecha"
+                                name="fecha"
+                                class="form-control"
+                                required
+                              />
+                            </div>
+
+                            <div class="mb-1 col-12">
+                              <label for="producto" class="form-label">Producto</label>
+                              <select name="producto" id="producto" class="form-select mb-1">
+                                <?php
+                                  foreach ($allProduct as $key => $val): 
+                                  ?> 
+                                  <option value="<?= $val['id_producto']?>"><?= $val['nombre']?></option>
                                 <?php 
                                 endforeach; 
                                 ?> 
                               </select>
                             </div>
 
-                            
-                            <div class="mb-1 col-6">
-                              <label for="precio" class="form-label">Precio</label>
-                              <input 
-                              type="number"
-                              placeholder="Ingrese el precio del producto"
-                              id="precio"
-                              name="precio"
-                              class="form-control"
-                              required
-                              />
-                            </div>
-                            
-                            <div class="mb-1 col-6">
-                              <label for="unidades" class="form-label">Unidades Disponibles</label>
-                              <input 
-                              type="number"
-                              placeholder="Ingrese la cantidad de unidades disponibles "
-                              id="unidades"
-                              name="unidades"
-                              class="form-control"
-                              required
-                              />
-                            </div>
-                            
                             <div class="mb-1 col-12">
-                              <label for="descontinuado" class="form-label">Descontinuado</label>
-                              <select required class="form-select" aria-label="Default select example" name="descontinuado">
-                                <option selected>Estado del producto</option>
-                                <option value="SI">Actualmente Descontinuado</option>
-                                <option value="NO">No se encuentra Descontinuado</option>
-                              </select>
-                            </div>
-                            
-                            <div class="mb-1 col-12">
-                              <label for="descripcion" class="form-label">Descripcion del producto</label>
+                              <label for="cantidad" class="form-label">Cantidad</label>
                               <input 
-                                type="text"
-                                placeholder="Ingrese la descripcion del producto"
-                                id="descripcion"
-                                name="descripcion"
+                                type="number"
+                                placeholder="Ingrese la cantidad de elementos que desea llevar"
+                                id="cantidad"
+                                name="cantidad"
                                 class="form-control"
                                 required
                               />
                             </div>
-
+                            
                             <div class=" col-12 m-2">
-                              <button type="submit" class="btn btn-primary" value="productos" name="guardar">Agregar Producto</button>
+                              <button type="submit" class="btn btn-primary" value="cotizacion" name="guardar">Agregar Cotizacion</button>
                             </div>
 
                           </form>  
@@ -231,17 +217,16 @@ print_r($allBrand);
                       
                     </div>
                   </div>
+
+                  
                   <table class="table table-custom ">
                     <thead>
                       <tr>
                         <th class="barra .text-light" scope="col">#</th>
-                        <th class="barra .text-light" scope="col">NOMBRE</th>
-                        <th class="barra .text-light" scope="col">CATEGORIA</th>
-                        <th class="barra .text-light" scope="col">MARCA</th>
-                        <th class="barra .text-light" scope="col">PRECIO</th>
-                        <th class="barra .text-light" scope="col">UNIDADES</th>
-                        <th class="barra .text-light" scope="col">DESCONTINUADO</th>
-                        <th class="barra .text-light" scope="col">DESCRIPCION</th>
+                        <th class="barra .text-light" scope="col">EMPLEADO</th>
+                        <th class="barra .text-light" scope="col">CLIENTE</th>
+                        <th class="barra .text-light" scope="col">FECHA</th>
+                        <th class="barra .text-light" scope="col">FACTURA</th>
                         <th class="barra .text-light" scope="col">BORRAR</th>
 
 
@@ -314,19 +299,58 @@ print_r($allBrand);
                           endswitch;
                       ?>
                       <tr>
-                        <td> <?= $val['id_producto']; ?></td>
-                        <td> <?= $val['nombre']; ?></td>
-                        <td> <?= $val['categoria']; ?></td>
-                        <td> <?= $val['marca']; ?></td>
-                        <td> <?= $val['precio']; ?></td>
-                        <td> <?= $val['unidades']; ?></td>
-                        <td> <?= $val['descontinuado']; ?></td>
-                        <td> <?= $val['descripcion']; ?></td>
-                        <td><a href="../controlers/borar.php?id=<?= $val['id_producto'] ?>&req=deleteproducto" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
+                        <td> <?= $val['id_cotizacion']; ?></td>
+                        <td> <?= $val['empleado']; ?></td>
+                        <td> <?= $val['cliente']; ?></td>
+                        <td> <?= $val['fecha']; ?></td>
+                        <td> <a href="detalles.php?id=<?= $val['id_cotizacion'] ?>" class="<?= $bot ?> "><i class="bi bi-basket3"></i> Factura
+                        </button>
+                        </td>
+                        <td><a href="../controlers/borar.php?id=<?= $val['id_cotizacion'] ?>&req=deletecotizacion" class="<?= $but ?>"><i class="bi bi-trash3"></i>Borrar</a></td>
                       </tr>
                       <?php } ?>
                     </tbody>
                   </table>
+                  
+                  <?php foreach($allFactura as $key => $val){
+                  ?>
+                  <div class="modal fade" id="detalle<?= $val['id_cotizacion'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title mt-5 bg-success" id="exampleModalLabel">Detalles de Factura</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                          <table class="table table-custom">
+                          <thead>
+                          <tr>
+                              <th class="barra .text-light" scope="col">#</th>
+                              <th class="barra .text-light" scope="col">PRODUCTO</th>
+                              <th class="barra .text-light" scope="col">CANTIDAD</th>
+                            </tr>
+                          </thead>
+                            <tbody>
+                            <tr>
+                              <td><?= $val['producto']?></td>
+                              <td><?= $val['cantidad']?></td>
+                              <td></td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+
+                           
+                        </div>
+                      </div>
+                      
+                    </div>
+                  <?php } ?>
+
                 </div>
             </div>
         </div>

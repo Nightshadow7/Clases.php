@@ -53,7 +53,7 @@ $allData = $data->selectAll();
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="../../frontend/index.php">
             <span>
-              Login
+              Cargos Empleados
             </span>
           </a>
           <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
