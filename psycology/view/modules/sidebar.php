@@ -33,9 +33,16 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
+          <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+          
+          <li class="nav-item">
+            <a href="/" class="nav-link active">
+              <i class="nav-icon far fa-user"></i>
+              <p>
+                Home
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="/users" class="nav-link">
               <i class="nav-icon far fa-user"></i>
@@ -73,6 +80,15 @@
             </a>
           </li>
           
+          <li class="nav-item">
+            <a href="/interview" class="nav-link">
+              <i class="nav-icon far fa-fa-clipboard-question"></i>
+              <i class="fa-solid fa-heart-pulse"></i>
+              <p>
+                Treatment
+              </p>
+            </a>
+          </li>
           
 
 
