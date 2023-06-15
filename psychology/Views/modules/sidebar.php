@@ -25,7 +25,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="/PSYCOLOGY/Psycology/" class="nav-link <?php if($routes[4] == ""): ?> active <?php endif ?>">
+            <a href="/ArTeM02-065/psicology/psychology/" class="nav-link <?php if($routes[4] == ""): ?> active <?php endif ?>">
               <i class="nav-icon far fa-user"></i>
               <p>
                 Home
@@ -34,7 +34,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/PSYCOLOGY/Psycology/users" class="nav-link <?php if($routes[4] == "users"): ?> active <?php endif ?>">
+            <a href="/ArTeM02-065/psicology/psychology/users" class="nav-link <?php if($routes[4] == "users"): ?> active <?php endif ?>">
               <i class="nav-icon far fa-user"></i>
               <p>
                 Users
@@ -43,7 +43,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/PSYCOLOGY/Psycology/clinicHistory" class="nav-link <?php if($routes[4] == "clinicHistory"): ?> active <?php endif ?>">
+            <a href="/ArTeM02-065/psicology/psychology/clinicHistory" class="nav-link <?php if($routes[4] == "clinicHistory"): ?> active <?php endif ?>">
               <i class="nav-icon far fa-user"></i>
               <p>
                 Clinic History
@@ -52,7 +52,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/PSYCOLOGY/Psycology/interviews" class="nav-link <?php if($routes[4] == "interviews"): ?> active <?php endif ?>">
+            <a href="/ArTeM02-065/psicology/psychology/interviews" class="nav-link <?php if($routes[4] == "interviews"): ?> active <?php endif ?>">
 <!--               <i class="nav-icon far fa-cart-shopping"></i>
  -->              <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
@@ -62,7 +62,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/PSYCOLOGY/Psycology/psychologist" class="nav-link <?php if($routes[4] == "psychologist"): ?> active <?php endif ?>">
+            <a href="/ArTeM02-065/psicology/psychology/psychologist" class="nav-link <?php if($routes[4] == "psychologist"): ?> active <?php endif ?>">
               <i class="nav-icon fal fa-head-side-medical"></i>
               <p>
                 Psychologist
@@ -71,7 +71,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/PSYCOLOGY/Psycology/tratment" class="nav-link <?php if($routes[4] == "tratment"): ?> active <?php endif ?>">
+            <a href="/ArTeM02-065/psicology/psychology/tratment" class="nav-link <?php if($routes[4] == "tratment"): ?> active <?php endif ?>">
               <i class="nav-icon fas fa-heartbeat"></i>
               <p>
                 Tratment
