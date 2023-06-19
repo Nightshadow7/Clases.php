@@ -1,7 +1,12 @@
-<?php
-class TemplateController{
+<?php 
+ini_set("display_errors", 1);
+ini_set("display_startup_errors", 1);
+error_reporting(E_ALL);
+
+  class TemplateController {
     public function index(){
-        require_once("Views/template.php");
+      require_once("view/template.php");
     }
-}
+  }
+  
 ?>
