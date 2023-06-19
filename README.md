@@ -1,3 +1,2 @@
-  PSYCHOLOGIST
-  
-Proyecto de plantilla de las psicologas 
+# PSYCOLOGY
+Proyect Psycology
