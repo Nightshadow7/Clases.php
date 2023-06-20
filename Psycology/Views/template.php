@@ -1,13 +1,15 @@
 <?php
 $routes = explode("/",$_SERVER["REQUEST_URI"]);
 $routes = array_filter($routes);
+
+print_r($routes);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Fixed Sidebar</title>
+  <title>Psycologist</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -58,13 +60,13 @@ $routes = array_filter($routes);
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <?php
-      if(!empty($routes[4])){
-        if ($routes[4] == "clinicHistory" ||
-            $routes[4] == "interviews" ||
-            $routes[4] == "psychologist" ||
-            $routes[4] == "tratment" ||
-            $routes[4] == "users") {
-           require_once "Views/pages/".$routes[4]."/".$routes[4].".php";
+      if(!empty($routes[3])){
+        if ($routes[3] == "clinicHistory" ||
+            $routes[3] == "interviews" ||
+            $routes[3] == "psychologist" ||
+            $routes[3] == "tratment" ||
+            $routes[3] == "users") {
+           require_once "Views/pages/".$routes[3]."/".$routes[3].".php";
         }
       }else{
          require_once "Views/pages/home/home.php";

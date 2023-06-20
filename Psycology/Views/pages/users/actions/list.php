@@ -1,9 +1,12 @@
 <?php
-$url = "http://localhost/ArTeM02-064/PSYCOLOGY/Apirest/Controllers/campers.php?op=GetAll";
+// /ArTeM02-064/PSYCOLOGY/
+
+$url = "http://localhost/PSYCHOLOGIST/Apirest/Controllers/campers.php?op=GetAll";
 $curl = curl_init();
 curl_setopt($curl,CURLOPT_URL,$url);
 curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
 $output = json_decode(curl_exec($curl));
+print_r($output);
 ?>
 <div class="card">
               <div class="card-header">
