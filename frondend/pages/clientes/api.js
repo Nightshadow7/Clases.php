@@ -1,4 +1,5 @@
 const urlClientes = "http://localhost/ArTeM02-065/clase2/backend/controller.php?op=getAll";
+const urlnewClientes = "http://localhost/ArTeM02-065/clase2/backend/controller.php?op=insert";
 
 export const getClientes =  async () => {
   try {
@@ -10,7 +11,7 @@ export const getClientes =  async () => {
     console.log(error);
   }
 }
-export const neCliente = async (registro) => {
+export const newCliente = async (registro) => {
   try {
     await fetch(urlnewCliente,{
       method:'post',

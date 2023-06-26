@@ -24,3 +24,25 @@ async function cargaClientes(){
   });
 };
 
+const formulario = document.getElementById('registrar');
+formulario.addEventListener("submit", newCliente)
+
+function newCliente(e){
+  const  id_constructora = document.querySelector('#constructora').value;
+  const nombre_constructora  = document.querySelector('#constructora').value;
+  const nit_constructora = document.querySelector('#nit').value;
+  const nombre_representante = document.querySelector('#representante').value;
+  const email_contacto = document.querySelector('#email').value;
+  const telefono_contacto = document.querySelector('#telefono').value;
+
+  const registro = {
+    id_constructora ,
+    nombre_constructora ,
+    nit_constructora , 
+    nombre_representante , 
+    email_contacto , 
+    telefono_contacto
+  }
+  console.log(registro);
+}
+
