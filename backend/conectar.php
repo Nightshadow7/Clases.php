@@ -7,8 +7,7 @@ class Conectar {
   protected $db;
   protected function Conexion (){
     try {
-      $conectar = $this -> db = new PDO("mysql:local=localhost;dbname=faturartemist","campus","campus2023");
-
+      $conectar = $this -> db = new PDO("mysql:local=localhost;dbname=facturartemist","campus","campus2023");
       return $conectar;
     } catch (Exception $e) {
       return $e -> getMessage();
@@ -16,7 +15,7 @@ class Conectar {
   }
 
   public function setName(){
-    return $this -> db -> query("SET NAMES 'UTF8'");
+    return $this -> db -> query("SET NAMES 'utf8'");
   }
 }
 

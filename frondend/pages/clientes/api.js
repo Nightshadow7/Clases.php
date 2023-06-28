@@ -1,5 +1,10 @@
-const urlClientes = "http://localhost/ArTeM02-065/clase2/backend/controller.php?op=getAll";
-const urlnewClientes = "http://localhost/ArTeM02-065/clase2/backend/controller.php?op=insert";
+//se usa el parametro para artemist --http://localhost/ArTeM02-065/clase2/backend/controller.php?op=getAll--
+const urlClientes = "http://localhost/SkylAb-107/node/backend/controller.php?op=getAll";
+//se usa para el parametro artemist --http://localhost/ArTeM02-065/clase2/backend/controller.php?op=insert--
+const urlnewClientes = "http://localhost/SkylAb-107/node/backend/controller.php?op=insert";
+
+const urlDeleteClientes = "http://localhost/SkylAb-107/node/backend/controller.php?op=delete";
+
 
 export const getClientes =  async () => {
   try {
@@ -13,7 +18,7 @@ export const getClientes =  async () => {
 }
 export const newCliente = async (registro) => {
   try {
-    await fetch(urlnewCliente,{
+    await fetch(urlnewClientes,{
       method:'post',
       body: JSON.stringify(registro),
       headers:{
@@ -21,6 +26,16 @@ export const newCliente = async (registro) => {
       }
   });
   } catch (error) {
-    console.log(error)
+    console.log(error);
+  }
+}
+
+export const deleteCliente = async idCliente => {
+  try {
+    await fetch(`${urlDeleteClientes}&id=${idCliente}`,{
+      method:'DELETE',
+    });
+  } catch (error) {
+    console.log(error);
   }
 }

@@ -80,7 +80,7 @@
           </div>
           <div class="modal-body">
             <form id="registrar" method="post" class="d-flex row">
-              <div class="col-6">
+              <div class="col-4">
                 <label for="id" class="col-form-label">ID</label>
                 <input 
                   type="number" 
@@ -90,8 +90,19 @@
                   required
                 />
               </div>
+
+              <div class="col-8">
+                <label for="constructora" class="col-form-label">Constructora</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="constructora"
+                  name="constructora"
+                  required
+                />
+              </div>
                 
-              <div class="col-6">
+              <div class="col-4">
                 <label for="nit" class="col-form-label"># NIT</label>
                 <input 
                   type="number" 
@@ -102,7 +113,7 @@
                 />
               </div>
 
-              <div class="col-12">
+              <div class="col-8">
                 <label for="persona" class="col-form-label">Representante</label>
                 <input 
                   type="text" 
@@ -134,12 +145,13 @@
                   required
                 />
               </div>
-            
+              
+              <div class="modal-footer">
+                <button type="submit" id="" class="btn btn-primary">Añadir</button>
+              </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Añadir</button>
-          </div>
+         
         </div>
       </div>
     </div>

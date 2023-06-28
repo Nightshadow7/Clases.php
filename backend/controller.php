@@ -15,10 +15,18 @@ header('Content-Type:application/json');
       $datos = $alquilar -> getClientes();
       echo json_encode($datos,true);
       break;
+
     case 'insert':
-      $data = $alquilar -> insertClientes($body[id_constructora] , $body[nombre_constructora] , $body[nit_constructora] , $body[nombre_representante] , $body[email_contacto] , $body[telefono_contacto]);
+      $data = $alquilar -> insertClientes($body['id_constructora'] , $body['nombre_constructora'] , $body['nit_constructora'] , $body['nombre_representante'] , $body['email_contacto'] , $body['telefono_contacto']);
+
       echo json_encode("los datos fueron cargados satisfactoriamente");
       break;
+      
+    case 'delete':
+      $datos = $alquilar ->deleteCliente($_GET["id"]);
+      echo json_encode("Cliente Eliminado", true);
+      break;
+
     default:
       # code...
       break;
