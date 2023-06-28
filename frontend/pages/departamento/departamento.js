@@ -41,25 +41,25 @@ function newDepartamentos(e){
 
   if(validation(registro)){
     alert("Todos los datos son obligatorios");
-  }return newPais (registro);
+  }return newDepartamento (registro);
 }
 
 function validation(Objeto){
   return !Object.values(Objeto).every(element => element !== '')
 }
 
-const eliminar = document.querySelector('#datosPais');
+const eliminar = document.querySelector('#datosDepartamento');
 eliminar.addEventListener('click',borrar);
 
 function borrar (e){
   if(e.target.classList.contains('delete')){
     console.log(e.target);
-    const idPais = e.target.getAttribute('id');
-    console.log(idPais);
+    const idDepartamento = e.target.getAttribute('id');
+    console.log(idDepartamento);
 
     const confir = confirm("Desea eliminarlo");
     if(confir){
-      deletePais(idPais);
+      deleteDepartamento(idDepartamento);
     };
   }
 };

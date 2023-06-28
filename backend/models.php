@@ -83,4 +83,44 @@ class Departamento extends Conectar{
     
   }
 }
+
+class Region extends Conectar{
+  public function getRegion(){
+    try {
+      $conectar = parent::Conexion();
+      parent::setName();
+      $stm = $conectar -> prepare("SELECT * FROM region");
+      $stm -> execute();
+      return $stm -> fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+      return $e;
+    }
+  }
+  public function insertRegion($idReg , $departamento , $nombreReg){
+    $conectar = parent::Conexion();
+    parent::setName();
+    $stm = "INSERT INTO region (idReg , departamento , nombreReg) VALUE (:idr , :dep , :nomr)";
+    $stm = $conectar -> prepare($stm);
+    $stm -> bindParam('idr', $idReg);
+    $stm -> bindParam('dep' , $departamento);
+    $stm -> bindParam('nomr', $nombreReg);
+    $stm -> execute();
+
+    return $stm -> fetchAll(PDO::FETCH_ASSOC);
+  }
+  public function deleteRegion($id){
+    $conectar = parent::Conexion();
+    parent::setName();
+    $sql = "DELETE FROM region WHERE idReg = ?";
+    $sql = $conectar -> prepare($sql);
+    $sql -> bindValue(1,$id);
+    $sql -> execute();
+    return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
+  }
+  public function editRegion($edi){
+    $conectar = parent::Conexion();
+    parent::setName();
+    
+  }
+}
 ?>

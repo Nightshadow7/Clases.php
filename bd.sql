@@ -42,3 +42,12 @@ INSERT INTO `pais`(`idPais`, `nombrePais`) VALUES (1,'Colombia');
 INSERT INTO `pais`(`idPais`, `nombrePais`) VALUES (2,'Peru');
 INSERT INTO `pais` (`idPais`,`nombrePais`) VALUES (3,'Hambrezuela');
 INSERT INTO `pais` (`idPais`,`nombrePais`) VALUES (4,'Panama');
+
+
+
+
+INSERT INTO `departamento`(`idDep`, `pais`, `nombreDep`) VALUES (1,1,'Santander');
+INSERT INTO `departamento`(`idDep`, `pais`, `nombreDep`) VALUES (2,1,'Caqueta');
+INSERT INTO `departamento`(`idDep`, `pais`, `nombreDep`) VALUES (3,1,'Magdalena');
+INSERT INTO `departamento`(`idDep`, `pais`, `nombreDep`) VALUES (4,2,'Canta');
+

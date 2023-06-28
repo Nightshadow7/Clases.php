@@ -55,7 +55,7 @@ print_r($allData);
                         <a class="nav-link active" aria-current="page" href="./departamento.php">Departamento</a>
                     </li>
                     <li class="nav-item mx-4">
-                        <a class="nav-link" href="Alquiler.html">Alquiler</a>
+                        <a class="nav-link" href="./../region/region.php">Regiones</a>
                     </li>
                     <li class="nav-item mx-4">
                         <a class="nav-link" href="Deboluciones.html">Devolución</a>
@@ -140,7 +140,7 @@ print_r($allData);
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Clientes</h3>
+                  <h3 class="card-title">Departamentos</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -180,7 +180,7 @@ print_r($allData);
 
 
 
-  <script src="clientes.js" type="module" ></script>
+  <script src="./departamento.js" type="module" ></script>
 
 
 
