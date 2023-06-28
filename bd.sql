@@ -51,3 +51,14 @@ INSERT INTO `departamento`(`idDep`, `pais`, `nombreDep`) VALUES (2,1,'Caqueta');
 INSERT INTO `departamento`(`idDep`, `pais`, `nombreDep`) VALUES (3,1,'Magdalena');
 INSERT INTO `departamento`(`idDep`, `pais`, `nombreDep`) VALUES (4,2,'Canta');
 
+
+
+
+INSERT INTO `region`(`idReg`, `departamento`, `nombreReg`) VALUES (1,1,'Bucaramanga');
+INSERT INTO `region`(`idReg`, `departamento`, `nombreReg`) VALUES (2,1,'Piedecuesta');
+INSERT INTO `region`(`idReg`, `departamento`, `nombreReg`) VALUES (3,1,'Giron');
+INSERT INTO `region`(`idReg`, `departamento`, `nombreReg`) VALUES (4,1,'Floridablanca');
+INSERT INTO `region`(`idReg`, `departamento`, `nombreReg`) VALUES (5,1,'Lebrija');
+
+
+

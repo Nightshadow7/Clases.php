@@ -5,8 +5,8 @@ error_reporting(E_ALL);
 
 require_once("./../../../backend/models.php");
 
-$data = new Departamento();/* creamos nueva clase de config */
-$allData = $data->getDepartamento();
+$data = new Region();/* creamos nueva clase de config */
+$allData = $data->getRegion();
 print_r($allData);
 ?>
 
@@ -52,15 +52,14 @@ print_r($allData);
                         <a class="nav-link active" aria-current="page" href="./../pais/pais.html">Paises</a>
                     </li>
                     <li class="nav-item mx-4">
-                        <a class="nav-link active" aria-current="page" href="./../departamento/departamento.php">Departamento</a>
+                        <a class="nav-link active" aria-current="page" href="./../departamento/departamento.php">Departamentos</a>
                     </li>
                     <li class="nav-item mx-4">
-                        <a class="nav-link" href="./region.php">Regiones</a>
+                        <a class="nav-link" href="./../region/region.php">Regiones</a>
                     </li>
                     <li class="nav-item mx-4">
-                        <a class="nav-link" href="./../campers/campers.php">Campers</a>
+                        <a class="nav-link" href="./campers.php">Campers</a>
                     </li>
-                    
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -70,18 +69,18 @@ print_r($allData);
         </div>
     </nav>
 
-  <h1 class="m-5" id="title">Regiones</h1>
-    <button type="button" class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Registrar nueva Region</button>
+  <h1 class="m-5" id="title">Campers</h1>
+    <button type="button" class="btn btn-outline-success m-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Registrar nuevo Camper</button>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar nueva Region</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar nuevo Camper</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form id="registrarRegion" method="post" class="d-flex row">
+            <form id="registrarCamper" method="post" class="d-flex row">
               <div class="col-4">
                 <label for="id" class="col-form-label">ID</label>
                 <input 
@@ -94,25 +93,47 @@ print_r($allData);
               </div>
 
               <div class="col-8">
-                <label for="departamento" class="form-label">Departamento</label>
-                <select name="departamento" id="departamento" class="form-select">
+                <label for="region" class="form-label">Region</label>
+                <select name="region" id="region" class="form-select ">
                 <?php
                   foreach ($allData as $key => $val): 
                   ?> 
-                  <option value="<?= $val['idDep']?>"><?= $val['nombreDep']?></option>
+                  <option value="<?= $val['idReg']?>"><?= $val['nombreReg']?></option>
                 <?php 
                 endforeach; 
                 ?> 
                 </select>
               </div>
-                
-              <div class="col-12">
-                <label for="nombre" class="col-form-label">Nombre Region</label>
+
+              <div class="col-6">
+                <label for="nombre" class="col-form-label">Nombre</label>
                 <input 
                   type="text" 
                   class="form-control" 
                   id="nombre"
                   name="nombre"
+                  required
+                />
+              </div>
+
+              <div class="col-6">
+                <label for="apellido" class="col-form-label">Apellido</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="apellido"
+                  name="apellido"
+                  required
+                />
+              </div>
+
+              <div class="col-6">
+                <label for="fecha" class="col-form-label">Fecha de Nacimiento</label>
+                <input 
+                  type="date" 
+                  class="form-control" 
+                  id="fecha"
+                  name="fecha"
                   required
                 />
               </div>
@@ -132,7 +153,7 @@ print_r($allData);
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Regiones</h3>
+                  <h3 class="card-title">Campers</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -140,13 +161,15 @@ print_r($allData);
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Departamento</th>
-                        <th>Nombre Region</th>
+                        <th>Region</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha Nacimiento</th>
                       </tr>
                     </thead>
                     
 
-                    <tbody id="datosRegion">
+                    <tbody id="datosCamper">
                       
                   
                       
@@ -172,7 +195,7 @@ print_r($allData);
 
 
 
-  <script src="./region.js" type="module" ></script>
+  <script src="campers.js" type="module" ></script>
 
 
 

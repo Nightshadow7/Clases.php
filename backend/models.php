@@ -123,4 +123,47 @@ class Region extends Conectar{
     
   }
 }
+
+class Camper extends Conectar{
+  public function getCamper(){
+    try {
+      $conectar = parent::Conexion();
+      parent::setName();
+      $stm = $conectar -> prepare("SELECT * FROM campers");
+      $stm -> execute();
+      return $stm -> fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+      return $e;
+    }
+  }
+  public function insertCamper($idCamper , $region , $nombre , $apellido , $fechaNac){
+    $conectar = parent::Conexion();
+    parent::setName();
+    $stm = "INSERT INTO campers (idCamper , region , nombre , apellido , fechaNac) VALUE (:idc , :reg , :nomc , :apel , :fecn)";
+    $stm = $conectar -> prepare($stm);
+    $stm -> bindParam('idc', $idCamper);
+    $stm -> bindParam('reg' , $region);
+    $stm -> bindParam('nomc', $nombre);
+    $stm -> bindParam('apel', $apellido);
+    $stm -> bindParam('fecn', $fechaNac);
+    $stm -> execute();
+
+    return $stm -> fetchAll(PDO::FETCH_ASSOC);
+  }
+  public function deleteCamper($id){
+    $conectar = parent::Conexion();
+    parent::setName();
+    $sql = "DELETE FROM campers WHERE idCamper = ?";
+    $sql = $conectar -> prepare($sql);
+    $sql -> bindValue(1,$id);
+    $sql -> execute();
+    return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
+  }
+  public function editCamper($edi){
+    $conectar = parent::Conexion();
+    parent::setName();
+    
+  }
+}
+
 ?>

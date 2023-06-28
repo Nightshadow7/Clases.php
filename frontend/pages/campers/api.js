@@ -5,27 +5,27 @@
 
 
 //se usa el parametro para artemist --http://localhost/ArTeM02-065/clase2/backend/controller.php?op=getAll--
-const urlDepartamento = "http://localhost/SkylAb-107/campusland/backend/departamento/departamentocontroller.php?op=getAll";
+const urlCamper = "http://localhost/SkylAb-107/campusland/backend/campers/campercontroller.php?op=getAll";
 
 //se usa para el parametro artemist --http://localhost/ArTeM02-065/clase2/backend/controller.php?op=insert--
-const urlnewDepartamento = "http://localhost/SkylAb-107/campusland/backend/departamento/departamentocontroller.php?op=insert";
+const urlnewCamper = "http://localhost/SkylAb-107/campusland/backend/campers/campercontroller.php?op=insert";
 
-const urlDeleteDepartamento = "http://localhost/SkylAb-107/campusland/backend/departamento/departamentocontroller.php?op=delete";
+const urlDeleteCamper = "http://localhost/SkylAb-107/campusland/backend/campers/campercontroller.php?op=delete";
 
 
-export const getDepartamento =  async () => {
+export const getCamper =  async () => {
   try {
-    const departamento = await fetch(urlDepartamento);
-    const datosDepartamento = await departamento.json(
+    const camper = await fetch(urlCamper);
+    const datosCamper = await camper.json(
       );
-    return datosDepartamento;
+    return datosCamper;
   } catch (error) {
     console.log(error);
   }
 }
-export const newDepartamento = async (registro) => {
+export const newCamper = async (registro) => {
   try {
-    await fetch(urlnewDepartamento,{
+    await fetch(urlnewCamper,{
       method:'post',
       body: JSON.stringify(registro),
       headers:{
@@ -37,9 +37,9 @@ export const newDepartamento = async (registro) => {
   }
 }
 
-export const deleteDepartamento = async idDepartamento => {
+export const deleteCamper = async idCamper => {
   try {
-    await fetch(`${urlDeleteDepartamento}&id=${idDepartamento}`,{
+    await fetch(`${urlDeleteCamper}&id=${idCamper}`,{
       method:'DELETE',
     });
   } catch (error) {

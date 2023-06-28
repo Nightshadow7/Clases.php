@@ -17,6 +17,7 @@ async function cargaRegion(){
         <td>${departamento}</td>
         <td>${nombreReg}</td>
         <td><button class="btn btn-outline-danger delete" id="${idReg}">Eliminar</button></td>
+        <td><button class="btn btn-outline-warning edit" id="${idReg}">Editar</button></td>
       </tr>
     `
   });
@@ -52,6 +53,21 @@ const eliminar = document.querySelector('#datosRegion');
 eliminar.addEventListener('click',borrar);
 
 function borrar (e){
+  if(e.target.classList.contains('delete')){
+    console.log(e.target);
+    const idRegion = e.target.getAttribute('id');
+    console.log(idRegion);
+
+    const confir = confirm("Desea eliminarlo");
+    if(confir){
+      deleteRegion(idRegion);
+    };
+  }
+};
+
+
+
+function editar (){
   if(e.target.classList.contains('delete')){
     console.log(e.target);
     const idRegion = e.target.getAttribute('id');

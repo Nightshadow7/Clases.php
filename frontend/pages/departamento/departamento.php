@@ -58,17 +58,9 @@ print_r($allData);
                         <a class="nav-link" href="./../region/region.php">Regiones</a>
                     </li>
                     <li class="nav-item mx-4">
-                        <a class="nav-link" href="Deboluciones.html">Devolución</a>
+                        <a class="nav-link" href="./../campers/campers.php">Campers</a>
                     </li>
-                    <li class="nav-item mx-4">
-                        <a class="nav-link disabled">Cotización</a>
-                    </li>
-                    <li class="nav-item mx-4">
-                        <a class="nav-link" href="facturas.html">Facturas</a>
-                    </li>
-                    <li class="nav-item mx-4">
-                        <a class="nav-link disabled">Inventario</a>
-                    </li>
+                    
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -103,7 +95,7 @@ print_r($allData);
 
               <div class="col-8">
                 <label for="pais" class="form-label">Pais</label>
-                <select name="pais" id="pais" class="form-select mb-1">
+                <select name="pais" id="pais" class="form-select ">
                 <?php
                   foreach ($allData as $key => $val): 
                   ?> 
